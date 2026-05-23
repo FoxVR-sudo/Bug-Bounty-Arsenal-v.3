@@ -1,0 +1,41 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Payment Received ✅</h1>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>Thank you! We've successfully received your payment for BugBounty Arsenal.</p>
+
+<div class="success-box">
+    <p><strong>✓ Payment Successful</strong></p>
+    <p>Amount: <strong>${{ amount }}</strong></p>
+    <p>Plan: {{ plan_name }}</p>
+    <p>Invoice #: {{ invoice_number }}</p>
+    <p>Date: {{ payment_date }}</p>
+</div>
+
+<h2 style="font-size: 18px; margin-top: 32px;">📄 Invoice Details</h2>
+
+<div class="info-box">
+    <p>Description: {{ plan_name }} Subscription</p>
+    <p>Billing Period: {{ billing_period }}</p>
+    <p>Next Billing Date: {{ next_billing_date }}</p>
+    <p>Payment Method: {{ payment_method }}</p>
+</div>
+
+<p style="text-align: center;">
+    <a href="{{ invoice_url }}" class="button">Download Invoice →</a>
+</p>
+
+<p style="text-align: center; margin-top: 16px;">
+    <a href="{{ billing_history_url }}" style="color: #667eea; text-decoration: none;">
+        View Billing History
+    </a>
+</p>
+
+<p style="margin-top: 32px;">
+    If you have any questions about this payment, please contact our support team.<br>
+    <strong>The BugBounty Arsenal Team</strong>
+</p>
+{% endblock %}

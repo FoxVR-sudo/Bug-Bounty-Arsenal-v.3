@@ -1,0 +1,35 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+  {% if funnel_metrics %}
+    <div class="module" style="margin-bottom: 20px; padding: 16px;">
+      <h2 style="margin-top: 0;">{{ funnel_title }}</h2>
+      <div style="margin: 12px 0 16px 0; display: flex; flex-wrap: wrap; gap: 8px;">
+        {% for option in funnel_period_options %}
+          <a
+            href="{{ option.url }}"
+            style="padding: 6px 12px; border-radius: 999px; text-decoration: none; border: 1px solid #417690; {% if option.selected %}background: #417690; color: #fff;{% else %}color: #417690; background: transparent;{% endif %}"
+          >
+            {{ option.label }}
+          </a>
+        {% endfor %}
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 12px;">
+        {% for metric in funnel_metrics %}
+          <div style="border: 1px solid #d1d5db; border-radius: 8px; padding: 14px; background: rgba(255, 255, 255, 0.04);">
+            <div style="font-size: 13px; opacity: 0.85; margin-bottom: 6px;">{{ metric.label }}</div>
+            <div style="font-size: 30px; font-weight: 700; line-height: 1; margin-bottom: 8px;">{{ metric.value }}</div>
+            <div style="font-size: 12px; opacity: 0.8; line-height: 1.4;">{{ metric.detail }}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div style="font-size: 12px; opacity: 0.75;">
+        {{ funnel_note }}
+      </div>
+    </div>
+  {% endif %}
+
+  {{ block.super }}
+{% endblock %}

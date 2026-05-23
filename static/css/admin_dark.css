@@ -1,0 +1,256 @@
+/* BugBounty Arsenal - Jazzmin Dark Theme Override */
+
+/* Main content area */
+body,
+.wrapper,
+.content-wrapper,
+.main-sidebar,
+.main-header {
+    background-color: #1a1a2e !important;
+    color: #e0e0e0 !important;
+}
+
+/* Content area background */
+.content-wrapper {
+    background-color: #16213e !important;
+}
+
+/* Cards / panels */
+.card,
+.card-header,
+.card-body,
+.card-footer {
+    background-color: #0f3460 !important;
+    color: #e0e0e0 !important;
+    border-color: #1a4a80 !important;
+}
+
+.card-header {
+    background-color: #0a2744 !important;
+    border-bottom: 1px solid #1a4a80 !important;
+}
+
+/* Tables */
+.table,
+.table th,
+.table td {
+    color: #e0e0e0 !important;
+    border-color: #1a4a80 !important;
+}
+
+.table-bordered {
+    border-color: #1a4a80 !important;
+}
+
+.table thead th {
+    background-color: #0a2744 !important;
+    color: #58a6ff !important;
+}
+
+.table tbody tr {
+    background-color: #0f3460 !important;
+}
+
+.table tbody tr:hover {
+    background-color: #1a4a80 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #122a52 !important;
+}
+
+/* Form controls */
+.form-control,
+.form-select,
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+textarea {
+    background-color: #0a2744 !important;
+    color: #e0e0e0 !important;
+    border-color: #1a4a80 !important;
+}
+
+.form-control:focus,
+select:focus,
+input:focus,
+textarea:focus {
+    background-color: #0a2744 !important;
+    color: #fff !important;
+    border-color: #58a6ff !important;
+    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+}
+
+/* Labels */
+label,
+.col-form-label,
+.help-block,
+.field-help-text {
+    color: #c0c8d8 !important;
+}
+
+/* Sidebar */
+.main-sidebar,
+.sidebar {
+    background-color: #0d1b2a !important;
+}
+
+.nav-sidebar .nav-item .nav-link {
+    color: #b0bec5 !important;
+}
+
+.nav-sidebar .nav-item .nav-link:hover,
+.nav-sidebar .nav-item .nav-link.active {
+    background-color: #1a4a80 !important;
+    color: #fff !important;
+}
+
+.nav-sidebar .nav-item > .nav-link .right {
+    color: #b0bec5 !important;
+}
+
+/* Navbar */
+.main-header.navbar {
+    background-color: #0d1b2a !important;
+    border-bottom: 1px solid #1a4a80 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #b0bec5 !important;
+}
+
+/* Brand */
+.brand-link {
+    background-color: #0a2744 !important;
+    border-bottom: 1px solid #1a4a80 !important;
+    color: #58a6ff !important;
+}
+
+.brand-text {
+    color: #58a6ff !important;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: #0f3460 !important;
+}
+
+.breadcrumb-item,
+.breadcrumb-item a,
+.breadcrumb-item.active {
+    color: #c0c8d8 !important;
+}
+
+/* Footer */
+.main-footer {
+    background-color: #0d1b2a !important;
+    color: #b0bec5 !important;
+    border-top: 1px solid #1a4a80 !important;
+}
+
+/* Pagination */
+.page-link {
+    background-color: #0f3460 !important;
+    border-color: #1a4a80 !important;
+    color: #58a6ff !important;
+}
+
+.page-item.active .page-link {
+    background-color: #1a4a80 !important;
+    color: #fff !important;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    background-color: #0f3460 !important;
+    border-color: #1a4a80 !important;
+}
+
+.dropdown-item {
+    color: #e0e0e0 !important;
+}
+
+.dropdown-item:hover {
+    background-color: #1a4a80 !important;
+    color: #fff !important;
+}
+
+/* Alerts */
+.alert {
+    border-color: transparent !important;
+}
+
+/* Change list results */
+#result_list th,
+#result_list td {
+    color: #e0e0e0 !important;
+}
+
+#changelist-filter {
+    background-color: #0f3460 !important;
+    border-left: 1px solid #1a4a80 !important;
+}
+
+#changelist-filter h2,
+#changelist-filter h3 {
+    color: #58a6ff !important;
+    background-color: #0a2744 !important;
+}
+
+#changelist-filter a {
+    color: #b0d4ff !important;
+}
+
+#changelist-filter li.selected a {
+    color: #fff !important;
+}
+
+/* Related widget */
+.related-widget-wrapper {
+    color: #e0e0e0 !important;
+}
+
+/* Inline forms */
+.inline-group,
+.inline-related {
+    background-color: #0f3460 !important;
+    border-color: #1a4a80 !important;
+}
+
+.inline-group h2 {
+    background-color: #0a2744 !important;
+    color: #58a6ff !important;
+}
+
+/* Object tools */
+.object-tools a {
+    background-color: #1a4a80 !important;
+    color: #fff !important;
+}
+
+/* Submit row */
+.submit-row {
+    background-color: #0a2744 !important;
+    border-top: 1px solid #1a4a80 !important;
+}
+
+/* Content header */
+.content-header h1 {
+    color: #e0e0e0 !important;
+}
+
+/* Search bar in header */
+.navbar-search .form-control {
+    background-color: #0f3460 !important;
+    color: #e0e0e0 !important;
+}
+
+/* Small badges/tags */
+.badge-secondary,
+.badge-info {
+    background-color: #1a4a80 !important;
+    color: #fff !important;
+}

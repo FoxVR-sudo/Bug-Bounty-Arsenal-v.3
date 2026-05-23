@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard
+Disallow: /scan
+Disallow: /results
+Disallow: /subscription
+Disallow: /profile
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://bugbounty-arsenal.com/sitemap.xml

@@ -1,0 +1,5 @@
+{
+  "buildCommand": "REACT_APP_API_URL=https://bugbounty-arsenal.up.railway.app/api npm run build",
+  "outputDirectory": "build",
+  "framework": "create-react-app"
+}

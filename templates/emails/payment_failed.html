@@ -1,0 +1,45 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Payment Failed ⚠️</h1>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>We were unable to process your payment for BugBounty Arsenal. Your subscription may be at risk.</p>
+
+<div class="warning-box">
+    <p><strong>⚠️ Payment Issue</strong></p>
+    <p>Amount: ${{ amount }}</p>
+    <p>Plan: {{ plan_name }}</p>
+    <p>Attempted: {{ attempt_date }}</p>
+    <p>Reason: {{ failure_reason }}</p>
+</div>
+
+<h2 style="font-size: 18px; margin-top: 32px;">What You Need to Do</h2>
+
+<div class="info-box">
+    <p><strong>1. Update your payment method</strong><br>
+    Make sure your card details are up to date and have sufficient funds.</p>
+    
+    <p><strong>2. Retry the payment</strong><br>
+    We'll automatically retry in {{ retry_days }} days, or you can retry now.</p>
+    
+    <p><strong>3. Avoid service interruption</strong><br>
+    Update your payment method before {{ deadline_date }} to keep your access.</p>
+</div>
+
+<p style="text-align: center;">
+    <a href="{{ update_payment_url }}" class="button">Update Payment Method →</a>
+</p>
+
+<p style="text-align: center; margin-top: 16px;">
+    <a href="{{ retry_payment_url }}" style="color: #667eea; text-decoration: none;">
+        Or retry payment now
+    </a>
+</p>
+
+<p style="margin-top: 32px;">
+    Need help? Our support team is here to assist you.<br>
+    <strong>The BugBounty Arsenal Team</strong>
+</p>
+{% endblock %}

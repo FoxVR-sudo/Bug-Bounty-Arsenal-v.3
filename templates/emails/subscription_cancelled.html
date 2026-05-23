@@ -1,0 +1,50 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Subscription Cancelled</h1>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>We're sorry to see you go! Your <strong>{{ plan_name }}</strong> subscription has been cancelled.</p>
+
+<div class="info-box">
+    <p><strong>Cancellation Details</strong></p>
+    <p>Plan: {{ plan_name }}</p>
+    <p>Cancelled Date: {{ cancellation_date }}</p>
+    <p>Access Until: <strong>{{ access_until }}</strong></p>
+</div>
+
+<p>You'll continue to have access to your premium features until <strong>{{ access_until }}</strong>. After that, your account will be downgraded to the Free plan.</p>
+
+<h2 style="font-size: 18px; margin-top: 32px;">What's Next?</h2>
+
+<div class="info-box">
+    <p><strong>Your data is safe</strong><br>
+    All your scan history and results will be preserved.</p>
+    
+    <p><strong>Free plan access</strong><br>
+    You can continue using BugBounty Arsenal with our Free plan.</p>
+    
+    <p><strong>Reactivate anytime</strong><br>
+    Changed your mind? You can reactivate your subscription at any time.</p>
+</div>
+
+<p style="text-align: center;">
+    <a href="{{ reactivate_url }}" class="button">Reactivate Subscription →</a>
+</p>
+
+<h2 style="font-size: 18px; margin-top: 32px;">Help Us Improve</h2>
+
+<p>We'd love to hear your feedback. Could you take a moment to tell us why you cancelled?</p>
+
+<p style="text-align: center; margin-top: 16px;">
+    <a href="{{ feedback_url }}" style="color: #667eea; text-decoration: none;">
+        Share Your Feedback
+    </a>
+</p>
+
+<p style="margin-top: 32px;">
+    Thank you for being a part of BugBounty Arsenal.<br>
+    <strong>The BugBounty Arsenal Team</strong>
+</p>
+{% endblock %}

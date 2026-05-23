@@ -1,0 +1,41 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Your Subscription is Expiring Soon ⏰</h1>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>This is a friendly reminder that your <strong>{{ plan_name }}</strong> subscription will expire in <strong>{{ days_remaining }} days</strong>.</p>
+
+<div class="warning-box">
+    <p><strong>⚠️ Subscription Expiring</strong></p>
+    <p>Plan: {{ plan_name }}</p>
+    <p>Expiration Date: <strong>{{ expiration_date }}</strong></p>
+    <p>Days Remaining: <strong>{{ days_remaining }}</strong></p>
+</div>
+
+<h2 style="font-size: 18px; margin-top: 32px;">What happens when it expires?</h2>
+
+<div class="info-box">
+    <p>After your subscription expires, you will:</p>
+    <p>• Be downgraded to the Free plan</p>
+    <p>• Lose access to premium features</p>
+    <p>• Be limited to {{ free_plan_scans }} scans per month</p>
+    <p>• Keep your scan history and data</p>
+</div>
+
+<p style="text-align: center;">
+    <a href="{{ renew_url }}" class="button">Renew Subscription →</a>
+</p>
+
+<p style="text-align: center; margin-top: 16px;">
+    <a href="{{ manage_subscription_url }}" style="color: #667eea; text-decoration: none;">
+        Or manage your subscription settings
+    </a>
+</p>
+
+<p style="margin-top: 32px;">
+    Questions? Our support team is here to help.<br>
+    <strong>The BugBounty Arsenal Team</strong>
+</p>
+{% endblock %}

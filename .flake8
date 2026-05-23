@@ -1,0 +1,29 @@
+[flake8]
+max-line-length = 120
+extend-ignore = E203, W503, W605
+exclude =
+    .git,
+    __pycache__,
+    venv,
+    .venv,
+    node_modules,
+    staticfiles,
+    media,
+    reports,
+    recon_output,
+    recon_results,
+    raw_responses,
+    scan_progress,
+    migrations,
+    detectors,
+    mobile_scanner,
+    tools,
+    tests
+per-file-ignores =
+    detectors/*.py: E501, E722, F541, F821, F841
+    mobile_scanner/*.py: E501, E722, F541, F821, F841
+    tools/*.py: E501, E722, F541, F821
+    tests/*.py: E501, F401
+    crawler.py: E501
+    scanner.py: E501, E741, F841
+    test_scan.py: E501, F541

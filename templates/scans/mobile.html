@@ -1,0 +1,65 @@
+{% extends 'scans/base_scanner.html' %}
+
+{% block title %}Mobile App Scanner - BugBounty Arsenal{% endblock %}
+
+{% block scanner_options %}
+<div class="form-group">
+    <label>Select Mobile Security Detectors</label>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem;">
+        <div class="checkbox-group">
+            <input type="checkbox" id="api_endpoints" name="detectors" value="api_security" checked>
+            <label for="api_endpoints">API Endpoints</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="ssl_pinning" name="detectors" value="ssl_pinning" checked>
+            <label for="ssl_pinning">SSL Pinning Bypass</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="root_detection" name="detectors" value="root_detection" checked>
+            <label for="root_detection">Root Detection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="data_storage" name="detectors" value="insecure_storage" checked>
+            <label for="data_storage">Insecure Data Storage</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="hardcoded_secrets" name="detectors" value="secret_detection" checked>
+            <label for="hardcoded_secrets">Hardcoded Secrets</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="deeplink" name="detectors" value="deeplink_vuln" checked>
+            <label for="deeplink">Deep Link Vulnerabilities</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="mobile_jwt" name="detectors" value="jwt">
+            <label for="mobile_jwt">JWT Token Issues</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="mobile_auth" name="detectors" value="auth_bypass">
+            <label for="mobile_auth">Auth Bypass</label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="platform">Platform</label>
+    <select id="platform" name="platform">
+        <option value="android" selected>Android</option>
+        <option value="ios">iOS</option>
+        <option value="both">Both</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="appFile">App Package/IPA (Optional)</label>
+    <input type="file" id="appFile" name="appFile" accept=".apk,.ipa">
+    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
+        Upload APK or IPA file for static analysis
+    </p>
+</div>
+
+<div class="form-group checkbox-group">
+    <input type="checkbox" id="dynamicAnalysis" name="dynamicAnalysis">
+    <label for="dynamicAnalysis">Enable Dynamic Analysis (Requires device/emulator)</label>
+</div>
+{% endblock %}

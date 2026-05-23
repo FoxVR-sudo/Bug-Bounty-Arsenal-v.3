@@ -1,0 +1,13 @@
+Verify your email address
+
+Hi {{ user_name }},
+
+Confirm this email address to finish creating your BugBounty Arsenal account.
+
+Verify your email address:
+{{ verification_url }}
+
+{% if verification_code %}Verification code: {{ verification_code }}
+{% endif %}{% if expiry_hours %}This verification link expires in {{ expiry_hours }} hours.
+{% endif %}
+If you did not create this account, you can safely ignore this email.

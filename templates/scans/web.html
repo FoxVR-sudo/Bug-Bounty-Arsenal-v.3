@@ -1,0 +1,94 @@
+{% extends 'scans/base_scanner.html' %}
+
+{% block title %}Web Application Scanner - BugBounty Arsenal{% endblock %}
+
+{% block scanner_options %}
+<div class="form-group">
+    <label>Select Web Vulnerability Detectors</label>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem;">
+        <div class="checkbox-group">
+            <input type="checkbox" id="xss" name="detectors" value="xss" checked>
+            <label for="xss">XSS (Cross-Site Scripting)</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="sqli" name="detectors" value="sql_injection" checked>
+            <label for="sqli">SQL Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="csrf" name="detectors" value="csrf" checked>
+            <label for="csrf">CSRF</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="lfi" name="detectors" value="lfi" checked>
+            <label for="lfi">LFI/RFI</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="xxe" name="detectors" value="xxe" checked>
+            <label for="xxe">XXE Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="ssti" name="detectors" value="ssti" checked>
+            <label for="ssti">SSTI</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="command_injection" name="detectors" value="command_injection" checked>
+            <label for="command_injection">Command Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="idor" name="detectors" value="idor" checked>
+            <label for="idor">IDOR</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="ssrf" name="detectors" value="ssrf" checked>
+            <label for="ssrf">SSRF</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="file_upload" name="detectors" value="file_upload" checked>
+            <label for="file_upload">File Upload Vuln</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="auth_bypass" name="detectors" value="auth_bypass" checked>
+            <label for="auth_bypass">Auth Bypass</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="brute_force" name="detectors" value="brute_force">
+            <label for="brute_force">Brute Force Testing</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cache_poisoning" name="detectors" value="cache_poisoning">
+            <label for="cache_poisoning">Cache Poisoning</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="header_injection" name="detectors" value="header_injection">
+            <label for="header_injection">Header Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="prototype_pollution" name="detectors" value="prototype_pollution">
+            <label for="prototype_pollution">Prototype Pollution</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="race_condition" name="detectors" value="race_condition">
+            <label for="race_condition">Race Conditions</label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="scanDepth">Scan Depth</label>
+    <select id="scanDepth" name="scanDepth">
+        <option value="basic">Basic (Fast)</option>
+        <option value="standard" selected>Standard (Recommended)</option>
+        <option value="comprehensive">Comprehensive (Thorough)</option>
+    </select>
+</div>
+
+<div class="form-group checkbox-group">
+    <input type="checkbox" id="followRedirects" name="followRedirects" checked>
+    <label for="followRedirects">Follow Redirects</label>
+</div>
+
+<div class="form-group checkbox-group">
+    <input type="checkbox" id="testSubdomains" name="testSubdomains">
+    <label for="testSubdomains">Test Subdomains</label>
+</div>
+{% endblock %}

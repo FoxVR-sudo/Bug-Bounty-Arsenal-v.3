@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog - BugBounty Arsenal{% endblock %}
+
+{% block content %}
+<div class="content-page">
+    <div class="content-container">
+        <h1>📝 Blog</h1>
+        <p class="subtitle">Security insights, tips, and updates</p>
+        
+        <div class="blog-list">
+            <div class="blog-post">
+                <h2>Latest Security Trends in 2026</h2>
+                <p class="post-meta">January 2, 2026</p>
+                <p>Discover the most critical vulnerabilities and attack vectors in modern web applications...</p>
+            </div>
+            
+            <div class="blog-post">
+                <h2>How to Find Your First Bug Bounty</h2>
+                <p class="post-meta">December 15, 2025</p>
+                <p>A comprehensive guide for beginners starting their bug bounty journey...</p>
+            </div>
+            
+            <div class="blog-post">
+                <h2>Automating Security Testing with BugBounty Arsenal</h2>
+                <p class="post-meta">December 1, 2025</p>
+                <p>Learn how to integrate our API into your security workflow...</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

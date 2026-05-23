@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Documentation - BugBounty Arsenal{% endblock %}
+
+{% block content %}
+<div class="content-page">
+    <div class="content-container">
+        <h1>📚 Documentation</h1>
+        <p class="subtitle">Complete guide to using BugBounty Arsenal</p>
+        
+        <div class="docs-section">
+            <h2>Getting Started</h2>
+            <p>Learn how to create your first security scan and analyze results.</p>
+            <ul>
+                <li>Quick Start Guide</li>
+                <li>Creating Your First Scan</li>
+                <li>Understanding Scan Results</li>
+                <li>Best Practices</li>
+            </ul>
+        </div>
+        
+        <div class="docs-section">
+            <h2>Scan Categories</h2>
+            <p>Explore all available scan types and detectors.</p>
+            <ul>
+                <li>Reconnaissance Scanning</li>
+                <li>Web Application Security</li>
+                <li>API Security Testing</li>
+                <li>Vulnerability Assessment</li>
+                <li>Mobile Security</li>
+                <li>Custom Scans (Enterprise)</li>
+            </ul>
+        </div>
+        
+        <div class="docs-section">
+            <h2>API Documentation</h2>
+            <p>Integrate BugBounty Arsenal into your workflow with our REST API.</p>
+            <a href="/api/" class="btn-primary">View API Reference</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

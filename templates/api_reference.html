@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}API Reference - BugBounty Arsenal{% endblock %}
+
+{% block content %}
+<div class="content-page">
+    <div class="content-container">
+        <h1>🔌 API Reference</h1>
+        <p class="subtitle">RESTful API for automating security scans</p>
+        
+        <div class="api-section">
+            <h2>Authentication</h2>
+            <pre><code>POST /api/auth/login/
+Authorization: Bearer &lt;access_token&gt;</code></pre>
+        </div>
+        
+        <div class="api-section">
+            <h2>Scans</h2>
+            <pre><code>GET  /api/scans/
+POST /api/scans/start/
+GET  /api/scans/{id}/
+GET  /api/scans/{id}/pdf/</code></pre>
+        </div>
+        
+        <div class="api-section">
+            <h2>Interactive API Documentation</h2>
+            <p>Explore and test all endpoints with our interactive docs:</p>
+            <a href="/api/docs/" class="btn-primary">Swagger UI</a>
+            <a href="/api/redoc/" class="btn-secondary">ReDoc</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

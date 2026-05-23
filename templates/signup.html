@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign Up - BugBounty Arsenal{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Create Account</h1>
+            <p>Start scanning for vulnerabilities today</p>
+        </div>
+        
+        <form id="signupForm" class="auth-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="yourusername">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="••••••••">
+            </div>
+            
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" id="password2" name="password2" required placeholder="••••••••">
+            </div>
+            
+            <button type="submit" class="btn-submit">Create Account</button>
+            
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Already have an account? <a href="/login/">Login</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const api = new BugBountyAPI();
+
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const password2 = document.getElementById('password2').value;
+        const errorDiv = document.getElementById('errorMessage');
+        
+        if (password !== password2) {
+            errorDiv.textContent = 'Passwords do not match';
+            errorDiv.style.display = 'block';
+            return;
+        }
+        
+        try {
+            // API expects username, email, password, password_confirm
+            const result = await api.signup(username, email, password, password2);
+            if (result.access) {
+                window.location.href = '/dashboard/';
+            } else {
+                errorDiv.textContent = result.error || 'Signup failed';
+                errorDiv.style.display = 'block';
+            }
+        } catch (error) {
+            errorDiv.textContent = error.message || 'Signup failed. Please try again.';
+            errorDiv.style.display = 'block';
+        }
+    });
+});
+</script>
+{% endblock %}

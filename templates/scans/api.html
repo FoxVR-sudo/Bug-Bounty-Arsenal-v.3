@@ -1,0 +1,76 @@
+{% extends 'scans/base_scanner.html' %}
+
+{% block title %}API Security Scanner - BugBounty Arsenal{% endblock %}
+
+{% block scanner_options %}
+<div class="form-group">
+    <label>Select API Security Detectors</label>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem;">
+        <div class="checkbox-group">
+            <input type="checkbox" id="jwt" name="detectors" value="jwt" checked>
+            <label for="jwt">JWT Vulnerabilities</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="graphql" name="detectors" value="graphql" checked>
+            <label for="graphql">GraphQL Security</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="api_security" name="detectors" value="api_security" checked>
+            <label for="api_security">API Security Testing</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="oauth" name="detectors" value="oauth" checked>
+            <label for="oauth">OAuth Misconfiguration</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="nosql_injection" name="detectors" value="nosql_injection" checked>
+            <label for="nosql_injection">NoSQL Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="rate_limit" name="detectors" value="rate_limit_bypass" checked>
+            <label for="rate_limit">Rate Limit Bypass</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="api_sqli" name="detectors" value="sql_injection">
+            <label for="api_sqli">SQL Injection (API)</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="api_ssrf" name="detectors" value="ssrf">
+            <label for="api_ssrf">SSRF (API)</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="api_idor" name="detectors" value="idor">
+            <label for="api_idor">IDOR (API)</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="api_auth" name="detectors" value="auth_bypass">
+            <label for="api_auth">Auth Bypass</label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="apiType">API Type</label>
+    <select id="apiType" name="apiType">
+        <option value="rest" selected>REST API</option>
+        <option value="graphql">GraphQL</option>
+        <option value="soap">SOAP</option>
+        <option value="grpc">gRPC</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="authToken">Authentication Token (Optional)</label>
+    <input type="text" id="authToken" name="authToken" placeholder="Bearer token or API key">
+</div>
+
+<div class="form-group">
+    <label for="apiSpec">API Spec URL (Optional)</label>
+    <input type="text" id="apiSpec" name="apiSpec" placeholder="OpenAPI/Swagger URL">
+</div>
+
+<div class="form-group checkbox-group">
+    <input type="checkbox" id="testEndpoints" name="testEndpoints" checked>
+    <label for="testEndpoints">Auto-discover Endpoints</label>
+</div>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'scans/base_scanner.html' %}
+
+{% block title %}Comprehensive Security Scan - BugBounty Arsenal{% endblock %}
+
+{% block scanner_options %}
+<div class="form-group">
+    <label>All Available Detectors (40+)</label>
+    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
+        Runs all detectors across Web, API, Recon, and Mobile security
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.5rem;">
+        <!-- Web Vulnerabilities -->
+        <div class="checkbox-group">
+            <input type="checkbox" id="xss" name="detectors" value="xss" checked>
+            <label for="xss">XSS</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="sqli" name="detectors" value="sql_injection" checked>
+            <label for="sqli">SQL Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="csrf" name="detectors" value="csrf" checked>
+            <label for="csrf">CSRF</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="lfi" name="detectors" value="lfi" checked>
+            <label for="lfi">LFI/RFI</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="xxe" name="detectors" value="xxe" checked>
+            <label for="xxe">XXE</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="ssti" name="detectors" value="ssti" checked>
+            <label for="ssti">SSTI</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cmdi" name="detectors" value="command_injection" checked>
+            <label for="cmdi">Command Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="idor" name="detectors" value="idor" checked>
+            <label for="idor">IDOR</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="ssrf" name="detectors" value="ssrf" checked>
+            <label for="ssrf">SSRF</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="file_upload" name="detectors" value="file_upload" checked>
+            <label for="file_upload">File Upload</label>
+        </div>
+        
+        <!-- API Security -->
+        <div class="checkbox-group">
+            <input type="checkbox" id="jwt" name="detectors" value="jwt" checked>
+            <label for="jwt">JWT</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="graphql" name="detectors" value="graphql" checked>
+            <label for="graphql">GraphQL</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="oauth" name="detectors" value="oauth" checked>
+            <label for="oauth">OAuth</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="nosql" name="detectors" value="nosql_injection" checked>
+            <label for="nosql">NoSQL Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="rate_limit" name="detectors" value="rate_limit_bypass" checked>
+            <label for="rate_limit">Rate Limit</label>
+        </div>
+        
+        <!-- Recon -->
+        <div class="checkbox-group">
+            <input type="checkbox" id="subdomain" name="detectors" value="subdomain_takeover" checked>
+            <label for="subdomain">Subdomain Takeover</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="dir_listing" name="detectors" value="directory_listing" checked>
+            <label for="dir_listing">Dir Listing</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="secrets" name="detectors" value="secret_detection" checked>
+            <label for="secrets">Secret Detection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="headers" name="detectors" value="security_headers" checked>
+            <label for="headers">Security Headers</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cve" name="detectors" value="cve_database" checked>
+            <label for="cve">CVE Database</label>
+        </div>
+        
+        <!-- Additional -->
+        <div class="checkbox-group">
+            <input type="checkbox" id="cors" name="detectors" value="cors" checked>
+            <label for="cors">CORS</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="open_redirect" name="detectors" value="open_redirect" checked>
+            <label for="open_redirect">Open Redirect</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="auth_bypass" name="detectors" value="auth_bypass" checked>
+            <label for="auth_bypass">Auth Bypass</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="brute_force" name="detectors" value="brute_force">
+            <label for="brute_force">Brute Force</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cache_poison" name="detectors" value="cache_poisoning">
+            <label for="cache_poison">Cache Poisoning</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="header_inj" name="detectors" value="header_injection">
+            <label for="header_inj">Header Injection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="prototype" name="detectors" value="prototype_pollution">
+            <label for="prototype">Prototype Pollution</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="race" name="detectors" value="race_condition">
+            <label for="race">Race Conditions</label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="scanMode">Scan Mode</label>
+    <select id="scanMode" name="scanMode">
+        <option value="balanced" selected>Balanced (Recommended)</option>
+        <option value="fast">Fast (Basic checks)</option>
+        <option value="thorough">Thorough (All tests)</option>
+        <option value="aggressive">Aggressive (Maximum coverage)</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="threads">Concurrent Threads</label>
+    <select id="threads" name="threads">
+        <option value="5">5 (Safe)</option>
+        <option value="10" selected>10 (Balanced)</option>
+        <option value="20">20 (Fast)</option>
+        <option value="50">50 (Aggressive)</option>
+    </select>
+</div>
+
+<div class="form-group checkbox-group">
+    <input type="checkbox" id="includeSubdomains" name="includeSubdomains" checked>
+    <label for="includeSubdomains">Scan Subdomains</label>
+</div>
+{% endblock %}

@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}BugBounty Arsenal - Advanced Security Scanner{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-container">
+        <h1 class="hero-title">Professional Bug Bounty Security Scanner</h1>
+        <p class="hero-subtitle">Automated vulnerability detection with 40+ security detectors. Find XSS, SQLi, SSRF, IDOR, and more in minutes.</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Security Detectors</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Scan Categories</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Automated Scanning</div>
+            </div>
+        </div>
+        <div class="hero-actions">
+            <a href="/signup/" class="btn-hero-primary">Start Free Scan</a>
+            <a href="#features" class="btn-hero-secondary">View Features</a>
+        </div>
+    </div>
+</section>
+
+<section class="platform-overview">
+    <div class="overview-container">
+        <h2>Complete Security Testing Platform</h2>
+        <p class="section-subtitle">BugBounty Arsenal is a comprehensive security scanning platform designed for bug bounty hunters, penetration testers, and security professionals.</p>
+        
+        <div class="overview-grid">
+            <div class="overview-card">
+                <div class="overview-icon">🔍</div>
+                <h3>6 Scan Categories</h3>
+                <p><strong>Reconnaissance:</strong> Subdomain discovery, DNS enumeration, technology detection</p>
+                <p><strong>Web Security:</strong> XSS, SQLi, CSRF, CORS, LFI, SSTI, XXE, and more</p>
+                <p><strong>API Security:</strong> GraphQL, REST API, JWT, OAuth vulnerabilities</p>
+                <p><strong>Vulnerability Scan:</strong> CVE detection, known vulnerabilities</p>
+                <p><strong>Mobile Security:</strong> Android and iOS app security testing</p>
+                <p><strong>Custom Scan:</strong> All 40+ detectors combined (Enterprise only)</p>
+            </div>
+            
+            <div class="overview-card">
+                <div class="overview-icon">⚡</div>
+                <h3>Powerful Features</h3>
+                <p>✓ <strong>Async Scanning:</strong> Multiple targets simultaneously with Celery task queue</p>
+                <p>✓ <strong>Real-time Updates:</strong> WebSocket notifications for scan progress</p>
+                <p>✓ <strong>Smart Rate Limiting:</strong> Avoid WAF detection with configurable delays</p>
+                <p>✓ <strong>Out-of-Band Detection:</strong> SSRF and XXE with Interactsh integration</p>
+                <p>✓ <strong>Detailed Reports:</strong> JSON, PDF, and HTML export formats</p>
+                <p>✓ <strong>REST API:</strong> Integrate scans into your CI/CD pipeline</p>
+            </div>
+            
+            <div class="overview-card">
+                <div class="overview-icon">🛡️</div>
+                <h3>Security & Compliance</h3>
+                <p>✓ <strong>Phone Verification:</strong> SMS authentication via Twilio</p>
+                <p>✓ <strong>Company Verification:</strong> Enterprise account validation</p>
+                <p>✓ <strong>Audit Logs:</strong> Complete activity tracking</p>
+                <p>✓ <strong>Encrypted Storage:</strong> Secure scan result retention</p>
+                <p>✓ <strong>Role-based Access:</strong> Team permissions and collaboration</p>
+                <p>✓ <strong>Stripe Payments:</strong> Secure subscription billing</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+    <div class="features-container">
+        <h2>Comprehensive Security Testing</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>XSS Detection</h3>
+                <p>Advanced pattern matching for reflected, stored, and DOM-based XSS vulnerabilities</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💉</div>
+                <h3>SQL Injection</h3>
+                <p>Detect SQL injection flaws with advanced payloads and error-based detection</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>SSRF Testing</h3>
+                <p>Server-Side Request Forgery detection with OOB callbacks</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>JWT Analysis</h3>
+                <p>Token security testing including algorithm confusion and key leaks</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📂</div>
+                <h3>LFI/RFI Scanner</h3>
+                <p>Local and remote file inclusion vulnerability detection</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔑</div>
+                <h3>IDOR Detection</h3>
+                <p>Insecure Direct Object Reference testing with fuzzing</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Command Injection</h3>
+                <p>OS command injection with multiple payload techniques</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>CSRF Analysis</h3>
+                <p>Cross-Site Request Forgery token validation testing</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>GraphQL Security</h3>
+                <p>Introspection, injection, and authorization testing</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="pricing-section">
+    <div class="pricing-container">
+        <h2>Simple, Transparent Pricing</h2>
+        <p class="section-subtitle">Choose the plan that fits your needs. Upgrade or downgrade anytime.</p>
+        
+        <div class="pricing-grid-three">
+            <!-- Free Plan -->
+            <div class="pricing-card">
+                <div class="plan-header">
+                    <h3>{{ free_plan.display_name }}</h3>
+                    <div class="plan-price">
+                        <span class="price">${{ free_plan.price|floatformat:0 }}</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="plan-description">{{ free_plan.description }}</p>
+                </div>
+                <ul class="plan-features">
+                    <li>✓ <strong>{{ free_plan.scans_per_day }} scans/day</strong>, {{ free_plan.scans_per_month }}/month</li>
+                    <li>✓ <strong>Recon Scan</strong> - Subdomain discovery</li>
+                    <li>✓ <strong>Web Scan</strong> - XSS, SQLi, CORS, CSRF</li>
+                    <li>✓ 16 web security detectors</li>
+                    <li>✓ Basic reports (JSON, HTML)</li>
+                    <li>✓ {{ free_plan.retention_days }}-day result retention</li>
+                    <li>✗ API & Vuln scans</li>
+                    <li>✗ Mobile security</li>
+                    <li>✗ REST API access</li>
+                    <li>✗ Priority support</li>
+                </ul>
+                <a href="/signup/" class="btn-plan">Get Started Free</a>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="pricing-card featured">
+                <div class="featured-badge">Most Popular</div>
+                <div class="plan-header">
+                    <h3>{{ pro_plan.display_name }}</h3>
+                    <div class="plan-price">
+                        <span class="price">${{ pro_plan.price|floatformat:0 }}</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="plan-description">{{ pro_plan.description }}</p>
+                </div>
+                <ul class="plan-features">
+                    <li>✓ <strong>{{ pro_plan.scans_per_day }} scans/day</strong>, {{ pro_plan.scans_per_month }}/month</li>
+                    <li>✓ <strong>All 5 scan categories:</strong></li>
+                    <li>&nbsp;&nbsp;&nbsp;• Recon + Web + API</li>
+                    <li>&nbsp;&nbsp;&nbsp;• Vulnerability + Mobile</li>
+                    <li>✓ 30+ security detectors</li>
+                    <li>✓ GraphQL & JWT testing</li>
+                    <li>✓ Advanced SSRF with OOB</li>
+                    <li>✓ REST API access</li>
+                    <li>✓ PDF & detailed reports</li>
+                    <li>✓ {{ pro_plan.retention_days }}-day retention</li>
+                    <li>✓ Priority support</li>
+                </ul>
+                <a href="/signup/?plan=pro" class="btn-plan-featured">Start Pro Trial</a>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+                <div class="plan-header">
+                    <h3>{{ enterprise_plan.display_name }}</h3>
+                    <div class="plan-price">
+                        <span class="price">${{ enterprise_plan.price|floatformat:0 }}</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="plan-description">{{ enterprise_plan.description }}</p>
+                </div>
+                <ul class="plan-features">
+                    <li>✓ <strong>Unlimited scans</strong></li>
+                    <li>✓ <strong>All 6 categories</strong> including:</li>
+                    <li>&nbsp;&nbsp;&nbsp;• <strong>Custom Scan</strong> (40+ detectors)</li>
+                    <li>✓ Dangerous tools (Nuclei, fuzzing)</li>
+                    <li>✓ Brute force & parameter fuzzing</li>
+                    <li>✓ {{ enterprise_plan.concurrent_scans }} concurrent scans</li>
+                    <li>✓ Team collaboration ({{ enterprise_plan.max_team_members }} members)</li>
+                    <li>✓ Unlimited integrations</li>
+                    <li>✓ Company verification</li>
+                    <li>✓ 90-day retention</li>
+                    <li>✓ Dedicated support & SLA</li>
+                </ul>
+                <a href="/signup/?plan=enterprise" class="btn-plan">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Payment Methods Section -->
+<section class="payment-methods">
+    <h2>Secure Payment Methods</h2>
+    <p>We accept all major payment methods with enterprise-grade security</p>
+    <div class="payment-icons">
+        <span class="payment-icon">💳 Visa</span>
+        <span class="payment-icon">💳 Mastercard</span>
+        <span class="payment-icon">💳 Amex</span>
+        <span class="payment-icon">🏦 Bank Transfer</span>
+    </div>
+</section>
+
+<!-- Security Section -->
+<section class="security-section">
+    <h2>🔒 Enterprise-Grade Security</h2>
+    <div class="security-features">
+        <div class="security-item">
+            <strong>PCI DSS Compliant</strong>
+            <p>All payment data is encrypted and processed securely</p>
+        </div>
+        <div class="security-item">
+            <strong>256-bit SSL Encryption</strong>
+            <p>Your data is protected with military-grade encryption</p>
+        </div>
+        <div class="security-item">
+            <strong>SOC 2 Type II</strong>
+            <p>Independently audited security and availability controls</p>
+        </div>
+        <div class="security-item">
+            <strong>GDPR Compliant</strong>
+            <p>Full compliance with EU data protection regulations</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Ready to find vulnerabilities?</h2>
+        <p>Start scanning in seconds. No credit card required.</p>
+        <a href="/signup/" class="btn-cta">Start Free Trial</a>
+    </div>
+</section>
+{% endblock %}

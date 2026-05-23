@@ -1,0 +1,41 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<span class="eyebrow">Account verification</span>
+<h1>Verify your email address</h1>
+
+<p class="lede">Use the secure link below to activate your account.</p>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>Confirm this email address to finish creating your BugBounty Arsenal account.</p>
+
+<div class="button-row">
+    <a href="{{ verification_url }}" class="button">Verify email address</a>
+</div>
+
+{% if verification_code %}
+<div class="code-box">
+    <p><strong>Verification code</strong></p>
+    <div class="code-value">{{ verification_code }}</div>
+    {% if expiry_hours %}
+    <p class="muted">This code expires in {{ expiry_hours }} hours.</p>
+    {% endif %}
+</div>
+{% endif %}
+
+<div class="link-box">
+    <p><strong>Link fallback</strong></p>
+    <p>If the button does not open, copy this link into your browser:</p>
+    <p><a href="{{ verification_url }}">{{ verification_url }}</a></p>
+</div>
+
+{% if expiry_hours %}
+<p class="muted">This verification link expires in {{ expiry_hours }} hours.</p>
+{% endif %}
+
+<div class="warning-box">
+    <p><strong>Did not sign up?</strong></p>
+    <p>You can ignore this message. The account stays inactive until the address is verified.</p>
+</div>
+{% endblock %}

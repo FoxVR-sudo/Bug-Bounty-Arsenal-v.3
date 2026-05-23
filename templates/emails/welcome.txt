@@ -1,0 +1,10 @@
+Your account is ready
+
+Hi {{ user_name }},
+
+Your email address is verified and your BugBounty Arsenal account is active{% if plan_name %} on the {{ plan_name }} plan{% endif %}.
+
+Open your dashboard:
+{{ dashboard_url }}
+
+If you did not expect this message, you can ignore it.

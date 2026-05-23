@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BugBounty Arsenal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/virustotal-style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32">
+                    <path fill="#00b4d8" d="M16 2L2 9v14l14 7 14-7V9L16 2zm0 4l10 5v10l-10 5-10-5V11l10-5z"/>
+                </svg>
+                <span>BugBounty Arsenal</span>
+            </a>
+            <div class="nav-links">
+                {% if user.is_authenticated %}
+                    <a href="/dashboard/">Dashboard</a>
+                    <a href="/pricing/">Pricing</a>
+                    <a href="/logout/" class="btn-logout">Logout</a>
+                {% else %}
+                    <a href="/#features">Features</a>
+                    <a href="/#pricing">Pricing</a>
+                    <a href="/login/">Login</a>
+                    <a href="/signup/" class="btn-primary">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>BugBounty Arsenal</h4>
+                    <p>Professional security scanning platform for bug bounty hunters and security researchers.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Twitter">🐦 Twitter</a>
+                        <a href="#" aria-label="GitHub">💻 GitHub</a>
+                        <a href="#" aria-label="Discord">💬 Discord</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/pricing/">Pricing</a></li>
+                        <li><a href="/docs/">Documentation</a></li>
+                        <li><a href="/api/">API Reference</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about/">About Us</a></li>
+                        <li><a href="/blog/">Blog</a></li>
+                        <li><a href="/careers/">Careers</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy/">Privacy Policy</a></li>
+                        <li><a href="/terms/">Terms of Service</a></li>
+                        <li><a href="/security/">Security</a></li>
+                        <li><a href="/compliance/">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BugBounty Arsenal. All rights reserved. Advanced Security Scanner Platform.</p>
+                <div class="footer-badges">
+                    <span class="badge">🔒 SOC 2 Certified</span>
+                    <span class="badge">✓ GDPR Compliant</span>
+                    <span class="badge">🛡️ PCI DSS</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/api-client.js' %}?v=2"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

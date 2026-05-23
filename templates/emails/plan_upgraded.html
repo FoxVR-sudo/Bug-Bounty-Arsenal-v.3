@@ -1,0 +1,47 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Plan Upgraded Successfully! 🎊</h1>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>Great news! Your subscription has been upgraded to the <strong>{{ new_plan }}</strong> plan.</p>
+
+<div class="success-box">
+    <p><strong>✓ Subscription Updated</strong></p>
+    <p>Previous Plan: {{ old_plan }}</p>
+    <p>New Plan: <strong style="font-size: 18px;">{{ new_plan }}</strong></p>
+    <p>Billing Cycle: {{ billing_cycle }}</p>
+    <p>Next Billing Date: {{ next_billing_date }}</p>
+</div>
+
+<h2 style="font-size: 18px; margin-top: 32px;">🚀 Your New Features</h2>
+
+<div class="info-box">
+    {% if new_plan == "Pro" %}
+    <p><strong>✓</strong> Unlimited scans per month</p>
+    <p><strong>✓</strong> Advanced vulnerability detection</p>
+    <p><strong>✓</strong> Priority support</p>
+    <p><strong>✓</strong> API access</p>
+    <p><strong>✓</strong> Custom scan profiles</p>
+    {% elif new_plan == "Enterprise" %}
+    <p><strong>✓</strong> Everything in Pro, plus:</p>
+    <p><strong>✓</strong> Dedicated account manager</p>
+    <p><strong>✓</strong> Custom integrations</p>
+    <p><strong>✓</strong> Team collaboration</p>
+    <p><strong>✓</strong> White-label reports</p>
+    <p><strong>✓</strong> SLA guarantee</p>
+    {% endif %}
+</div>
+
+<p style="text-align: center;">
+    <a href="{{ dashboard_url }}" class="button">Start Using New Features →</a>
+</p>
+
+<p>If you have any questions about your new plan, feel free to reach out to our support team.</p>
+
+<p style="margin-top: 32px;">
+    Thank you for upgrading!<br>
+    <strong>The BugBounty Arsenal Team</strong>
+</p>
+{% endblock %}

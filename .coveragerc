@@ -1,0 +1,31 @@
+[run]
+source = .
+omit = 
+    */migrations/*
+    */tests/*
+    */test_*.py
+    */__pycache__/*
+    */venv/*
+    */env/*
+    */node_modules/*
+    */frontend/*
+    manage.py
+    */wsgi.py
+    */asgi.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
+    @abstractmethod
+    @abc.abstractmethod
+
+precision = 2
+show_missing = True
+
+[html]
+directory = htmlcov

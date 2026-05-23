@@ -1,0 +1,39 @@
+{
+  "include": [
+    "scans",
+    "users",
+    "subscriptions",
+    "config",
+    "detectors"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.git",
+    "**/venv",
+    "**/venv_new",
+    "**/.venv",
+    "**/frontend",
+    "**/build",
+    "**/dist",
+    "**/*.log",
+    "**/db.sqlite3",
+    "**/recon_output",
+    "**/recon_results",
+    "**/reports",
+    "**/screenshots",
+    "**/raw_responses",
+    "**/bug_evidence",
+    "**/tools",
+    "**/mobile_scanner"
+  ],
+  "ignore": [
+    "**/migrations",
+    "scanner.py",
+    "manage.py"
+  ],
+  "reportMissingImports": false,
+  "reportMissingTypeStubs": false,
+  "pythonVersion": "3.12",
+  "typeCheckingMode": "basic"
+}

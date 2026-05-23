@@ -1,0 +1,29 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Plan Changed</h1>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>Your subscription has been changed to the <strong>{{ new_plan }}</strong> plan.</p>
+
+<div class="info-box">
+    <p><strong>Subscription Update</strong></p>
+    <p>Previous Plan: {{ old_plan }}</p>
+    <p>New Plan: <strong>{{ new_plan }}</strong></p>
+    <p>Effective Date: {{ effective_date }}</p>
+</div>
+
+<p>Your new plan limits will take effect on {{ effective_date }}. Until then, you can continue using your current plan features.</p>
+
+<p style="text-align: center;">
+    <a href="{{ dashboard_url }}" class="button">View Account Details →</a>
+</p>
+
+<p>Want to upgrade again? Check out our <a href="{{ pricing_url }}" style="color: #667eea;">pricing page</a> to see all available plans.</p>
+
+<p style="margin-top: 32px;">
+    Best regards,<br>
+    <strong>The BugBounty Arsenal Team</strong>
+</p>
+{% endblock %}

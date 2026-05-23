@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - BugBounty Arsenal{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Security Dashboard</h1>
+        <p>Select a scanner to start testing</p>
+    </div>
+
+    <div class="scanner-grid">
+        <a href="/scan/reconnaissance/" class="scanner-card">
+            <div class="scanner-icon">🔭</div>
+            <h3>Reconnaissance</h3>
+            <p>Subdomain takeover, directory listing, secrets, CVE detection, security headers</p>
+            <span class="scanner-badge">Core</span>
+        </a>
+
+        <a href="/scan/web/" class="scanner-card">
+            <div class="scanner-icon">🌐</div>
+            <h3>Web Application</h3>
+            <p>XSS, SQLi, CSRF, LFI, XXE, SSTI, Command Injection, IDOR, SSRF, and more</p>
+            <span class="scanner-badge">Core</span>
+        </a>
+
+        <a href="/scan/api/" class="scanner-card">
+            <div class="scanner-icon">🚀</div>
+            <h3>API Security</h3>
+            <p>JWT, GraphQL, OAuth, NoSQL injection, rate limiting, REST/SOAP/gRPC testing</p>
+            <span class="scanner-badge pro">Pro</span>
+        </a>
+
+        <a href="/scan/mobile/" class="scanner-card">
+            <div class="scanner-icon">📱</div>
+            <h3>Mobile Security</h3>
+            <p>Android/iOS analysis, SSL pinning, root detection, deeplinks, insecure storage</p>
+            <span class="scanner-badge pro">Pro</span>
+        </a>
+
+        <a href="/scan/comprehensive/" class="scanner-card">
+            <div class="scanner-icon">🛡️</div>
+            <h3>Comprehensive Scan</h3>
+            <p>Run all 40+ security detectors for complete coverage</p>
+            <span class="scanner-badge enterprise">Enterprise</span>
+        </a>
+    </div>
+
+    <div class="recent-scans">
+        <h2>Recent Scans</h2>
+        <div id="recentScansContainer">
+            <p class="loading">Loading scans...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const api = new BugBountyAPI();
+
+    // Load recent scans
+    async function loadRecentScans() {
+        try {
+            const scans = await api.getRecentScans();
+            const container = document.getElementById('recentScansContainer');
+            
+            if (!scans || scans.length === 0) {
+                container.innerHTML = '<p class="no-data">No scans yet. Start your first scan!</p>';
+                return;
+            }
+            
+            container.innerHTML = scans.map(scan => `
+                <div class="scan-item">
+                    <div class="scan-info">
+                        <strong>${scan.target}</strong>
+                        <span class="scan-type">${scan.scan_type}</span>
+                    </div>
+                    <div class="scan-status">
+                        <span class="status-badge status-${scan.status}">${scan.status}</span>
+                        <span class="scan-date">${new Date(scan.created_at).toLocaleDateString()}</span>
+                    </div>
+                </div>
+            `).join('');
+        } catch (error) {
+            console.error('Failed to load scans:', error);
+        }
+    }
+
+    // Check authentication
+    if (!api.isAuthenticated()) {
+        window.location.href = '/login/';
+    } else {
+        loadRecentScans();
+    }
+});
+</script>
+{% endblock %}

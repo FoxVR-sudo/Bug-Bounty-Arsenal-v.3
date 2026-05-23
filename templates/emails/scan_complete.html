@@ -1,0 +1,63 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<h1>Scan Complete 🔍</h1>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>Your security scan has completed successfully!</p>
+
+<div class="info-box">
+    <p><strong>Scan Details</strong></p>
+    <p>Target: <strong>{{ target_url }}</strong></p>
+    <p>Categories: {{ categories }}</p>
+    <p>Duration: {{ duration }}</p>
+    <p>Completed: {{ completion_date }}</p>
+</div>
+
+<h2 style="font-size: 18px; margin-top: 32px;">📊 Results Summary</h2>
+
+<div class="{% if critical_count > 0 or high_count > 0 %}warning-box{% else %}success-box{% endif %}">
+    <p><strong>Vulnerabilities Found:</strong></p>
+    <p style="margin: 12px 0;">
+        {% if critical_count > 0 %}
+        <span style="color: #dc3545; font-weight: bold;">🔴 Critical: {{ critical_count }}</span><br>
+        {% endif %}
+        {% if high_count > 0 %}
+        <span style="color: #fd7e14; font-weight: bold;">🟠 High: {{ high_count }}</span><br>
+        {% endif %}
+        {% if medium_count > 0 %}
+        <span style="color: #ffc107; font-weight: bold;">🟡 Medium: {{ medium_count }}</span><br>
+        {% endif %}
+        {% if low_count > 0 %}
+        <span style="color: #28a745; font-weight: bold;">🟢 Low: {{ low_count }}</span><br>
+        {% endif %}
+        {% if info_count > 0 %}
+        <span style="color: #17a2b8;">ℹ️ Info: {{ info_count }}</span>
+        {% endif %}
+    </p>
+    <p style="margin-top: 12px;"><strong>Total Issues: {{ total_count }}</strong></p>
+</div>
+
+{% if critical_count > 0 or high_count > 0 %}
+<div class="warning-box" style="margin-top: 24px;">
+    <p><strong>⚠️ Action Required</strong></p>
+    <p>Critical or high-severity vulnerabilities were found. We recommend reviewing and addressing these issues immediately.</p>
+</div>
+{% endif %}
+
+<p style="text-align: center;">
+    <a href="{{ results_url }}" class="button">View Full Report →</a>
+</p>
+
+<p style="text-align: center; margin-top: 16px;">
+    <a href="{{ export_url }}" style="color: #667eea; text-decoration: none;">
+        Download PDF Report
+    </a>
+</p>
+
+<p style="margin-top: 32px;">
+    Keep your applications secure,<br>
+    <strong>The BugBounty Arsenal Team</strong>
+</p>
+{% endblock %}

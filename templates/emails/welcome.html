@@ -1,0 +1,29 @@
+{% extends "emails/base.html" %}
+
+{% block content %}
+<span class="eyebrow">Account ready</span>
+<h1>Your account is ready</h1>
+
+<p class="lede">Your email address has been verified and your account is active.</p>
+
+<p>Hi <strong>{{ user_name }}</strong>,</p>
+
+<p>Your BugBounty Arsenal account is ready to use.</p>
+
+<div class="success-box">
+    <p><strong>Account status</strong></p>
+    <p>Email confirmed and workspace active{% if plan_name %} on the <strong>{{ plan_name }}</strong> plan{% endif %}.</p>
+</div>
+
+<div class="button-row">
+    <a href="{{ dashboard_url }}" class="button">Open dashboard</a>
+</div>
+
+<div class="link-box">
+    <p><strong>Dashboard link</strong></p>
+    <p>If the button does not open, copy this link into your browser:</p>
+    <p><a href="{{ dashboard_url }}">{{ dashboard_url }}</a></p>
+</div>
+
+<p class="muted">If you did not expect this message, you can ignore it.</p>
+{% endblock %}

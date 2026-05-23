@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ subject }}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #edf2f7;
+            color: #0f172a;
+        }
+        .email-wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+        }
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #155e75 55%, #0f766e 100%);
+            padding: 28px 28px 36px;
+        }
+        .brand-chip {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .logo {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0;
+            text-decoration: none;
+        }
+        .tagline {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-top: 10px;
+            max-width: 520px;
+        }
+        .content {
+            padding: 40px 32px 36px;
+        }
+        .eyebrow {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #e0f2fe;
+            color: #075985;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .content h1 {
+            color: #0f172a;
+            font-size: 31px;
+            line-height: 1.2;
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+        .content h2 {
+            color: #0f172a;
+            font-size: 20px;
+            margin: 28px 0 12px;
+        }
+        .content p {
+            color: #334155;
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 16px 0;
+        }
+        .lede {
+            color: #475569;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-top: 0;
+        }
+        .button-row {
+            margin: 30px 0 24px;
+            text-align: left;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 26px;
+            background: linear-gradient(135deg, #0f766e 0%, #0891b2 100%);
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+        .button-secondary {
+            background: #e2e8f0;
+            color: #0f172a !important;
+        }
+        .panel,
+        .info-box,
+        .warning-box,
+        .success-box,
+        .link-box,
+        .code-box {
+            border-radius: 20px;
+            padding: 20px 22px;
+            margin: 24px 0;
+        }
+        .info-box {
+            background-color: #f8fafc;
+            border: 1px solid #dbeafe;
+        }
+        .info-box p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .warning-box {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+        }
+        .success-box {
+            background-color: #ecfdf5;
+            border: 1px solid #a7f3d0;
+        }
+        .link-box {
+            background: #f8fafc;
+            border: 1px dashed #94a3b8;
+        }
+        .code-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+            border: 1px solid #c7d2fe;
+            text-align: center;
+        }
+        .code-value {
+            display: inline-block;
+            padding: 12px 16px;
+            border-radius: 14px;
+            background: #ffffff;
+            color: #0f172a;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            margin: 8px 0 0;
+        }
+        .mini-list {
+            padding-left: 18px;
+            margin: 12px 0 0;
+        }
+        .mini-list li {
+            color: #334155;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .feature-grid {
+            margin: 26px 0;
+        }
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 18px 18px 16px;
+            margin-bottom: 14px;
+        }
+        .feature-card h3 {
+            color: #0f172a;
+            font-size: 17px;
+            margin: 0 0 8px;
+        }
+        .feature-card p {
+            margin: 0;
+            font-size: 14px;
+        }
+        .muted {
+            color: #64748b;
+            font-size: 14px;
+        }
+        .footer {
+            background: #f8fafc;
+            padding: 28px 24px 32px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer p {
+            color: #64748b;
+            font-size: 13px;
+            margin: 8px 0;
+        }
+        .footer a {
+            color: #0f766e;
+            text-decoration: none;
+        }
+        .divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 32px 0;
+        }
+        .preheader {
+            display: none !important;
+            visibility: hidden;
+            opacity: 0;
+            color: transparent;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            mso-hide: all;
+        }
+        a {
+            color: #0891b2;
+            word-break: break-word;
+        }
+        @media only screen and (max-width: 600px) {
+            .email-wrapper {
+                border-radius: 0;
+            }
+            .content {
+                padding: 30px 20px 28px;
+            }
+            .header {
+                padding: 24px 20px 28px;
+            }
+            .content h1 {
+                font-size: 28px;
+            }
+            .button {
+                display: block;
+                margin-right: 0;
+                margin-bottom: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preheader">{{ message_preview|default:subject }}</div>
+    <div class="email-wrapper">
+        <div class="header">
+            <h1 class="logo">BugBounty Arsenal</h1>
+        </div>
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div class="footer">
+            <p><strong>BugBounty Arsenal</strong></p>
+            <p>Transactional account email</p>
+
+            <div class="divider"></div>
+
+            <p style="font-size: 12px; color: #94a3b8;">
+                This email was sent to {{ user_email }}<br>
+                If you did not expect it, you can safely ignore it.
+            </p>
+
+            <p style="font-size: 11px; color: #94a3b8; margin-top: 20px;">
+                © {{ current_year }} BugBounty Arsenal. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

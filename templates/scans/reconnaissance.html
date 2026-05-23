@@ -1,0 +1,57 @@
+{% extends 'scans/base_scanner.html' %}
+
+{% block title %}Reconnaissance Scanner - BugBounty Arsenal{% endblock %}
+
+{% block scanner_options %}
+<div class="form-group">
+    <label>Select Reconnaissance Detectors</label>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem;">
+        <div class="checkbox-group">
+            <input type="checkbox" id="subdomain_takeover" name="detectors" value="subdomain_takeover" checked>
+            <label for="subdomain_takeover">Subdomain Takeover</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="dir_listing" name="detectors" value="directory_listing" checked>
+            <label for="dir_listing">Directory Listing</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="secret_detection" name="detectors" value="secret_detection" checked>
+            <label for="secret_detection">Secret Detection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="security_headers" name="detectors" value="security_headers" checked>
+            <label for="security_headers">Security Headers</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cve_database" name="detectors" value="cve_database" checked>
+            <label for="cve_database">CVE Database Scan</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="tech_detection" name="detectors" value="tech_detection" checked>
+            <label for="tech_detection">Technology Detection</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="cors" name="detectors" value="cors" checked>
+            <label for="cors">CORS Misconfiguration</label>
+        </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="open_redirect" name="detectors" value="open_redirect" checked>
+            <label for="open_redirect">Open Redirect</label>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="depth">Crawl Depth</label>
+    <select id="depth" name="depth">
+        <option value="1">Shallow (1 level)</option>
+        <option value="2" selected>Medium (2 levels)</option>
+        <option value="3">Deep (3 levels)</option>
+    </select>
+</div>
+
+<div class="form-group checkbox-group">
+    <input type="checkbox" id="includeSubdomains" name="includeSubdomains" checked>
+    <label for="includeSubdomains">Include Subdomains</label>
+</div>
+{% endblock %}
