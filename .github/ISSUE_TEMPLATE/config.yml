@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security disclosure
+    url: mailto:foxvr81@gmail.com?subject=%5BSECURITY%5D%20BugBounty%20Arsenal%20vulnerability%20report
+    about: Report vulnerabilities privately. Do not open public security issues.

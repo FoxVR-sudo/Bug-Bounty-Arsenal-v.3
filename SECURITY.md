@@ -1,124 +1,44 @@
 # Security Policy
 
-## Supported Versions
+## Supported Version
 
-| Version | Supported          |
-| ------- | ------------------ |
-| Latest  | :white_check_mark: |
-| < 1.0   | :x:                |
+Security fixes are applied to the latest public version on the default branch.
 
-## Reporting a Vulnerability
+## Reporting a vulnerability
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+Do not report security vulnerabilities through public GitHub issues.
 
-If you discover a security vulnerability in BugBounty Arsenal, please follow responsible disclosure:
+Send reports to **foxvr81@gmail.com** with the subject line:
 
-### 1. Contact
+`[SECURITY] BugBounty Arsenal vulnerability report`
 
-Email: **foxvr81@gmail.com**
+Please include:
 
-Subject: `[SECURITY] Vulnerability in BugBounty Arsenal`
+- a clear description of the issue
+- reproduction steps or a minimal proof of concept
+- impact assessment
+- affected commit, branch, or deployment context if known
+- your preferred disclosure name, if you want credit
 
-### 2. Provide Details
+## Response targets
 
-Include in your report:
-- Description of the vulnerability
-- Steps to reproduce
-- Potential impact
-- Suggested fix (if available)
-- Your name/handle for credit (optional)
+- `24-48 hours`: initial acknowledgement
+- `7 days`: triage and severity assessment
+- `30 days`: target window for a fix or mitigation plan
 
-### 3. Response Timeline
+These are targets, not guarantees, but reports are handled as quickly as possible.
 
-- **24-48 hours**: Initial response acknowledging receipt
-- **7 days**: Assessment and preliminary analysis
-- **30 days**: Fix development and testing
-- **Public disclosure**: After fix is released
+## Safe usage expectations
 
-### 4. Security Best Practices
+- Scan only systems you own or are explicitly authorized to test.
+- Follow program scope and disclosure rules.
+- Preserve consent checks, rate limits, and non-destructive defaults.
+- Do not publish sensitive findings before coordinated disclosure.
 
-When using BugBounty Arsenal:
+## Scope notes
 
-#### Authorization
-- ✅ Only scan systems you have explicit written permission to test
-- ✅ Obtain proper authorization before running scans
-- ✅ Follow bug bounty program rules and scope
-- ❌ Never scan unauthorized systems
+BugBounty Arsenal is a security testing platform, so some components intentionally exercise risky code paths for authorized assessment. A valid report should show a weakness in the product itself, not only the expected existence of exploit payloads, detector heuristics, or scanner signatures.
 
-#### Safe Usage
-- ✅ Use rate limiting (`--per-host-rate`)
-- ✅ Respect target system resources
-- ✅ Use `--consent` flag (required)
-- ❌ Don't use `--allow-destructive` unless necessary
-- ❌ Don't bypass safety mechanisms
+## Legal note
 
-#### Data Handling
-- ✅ Secure evidence files properly
-- ✅ Encrypt sensitive reports
-- ✅ Delete reports after submission
-- ❌ Don't expose findings publicly before disclosure
-- ❌ Don't share credentials found during testing
-
-#### Responsible Disclosure
-- ✅ Report findings to program owners
-- ✅ Allow time for fixes before disclosure
-- ✅ Follow coordinated vulnerability disclosure
-- ❌ Don't publish exploits without permission
-- ❌ Don't threaten or extort organizations
-
-### 5. Security Features
-
-BugBounty Arsenal includes several safety features:
-
-- **Consent Required**: `--consent` flag must be provided
-- **Rate Limiting**: Automatic per-host request throttling
-- **Non-Destructive**: Safe testing by default
-- **Evidence Collection**: Full audit trail of actions
-- **Timeout Protection**: Prevents hanging connections
-- **Retry Limits**: Prevents excessive requests
-
-### 6. Known Limitations
-
-Users should be aware:
-- Scanner may generate false positives
-- Some detectors use pattern matching
-- Not a replacement for manual testing
-- May miss vulnerabilities requiring context
-- Rate limiting may affect thoroughness
-
-### 7. Legal Disclaimer
-
-**IMPORTANT**: This tool is for authorized testing only.
-
-- Unauthorized access to computer systems is illegal
-- Users are responsible for obtaining proper authorization
-- Authors are not liable for misuse
-- Use at your own risk
-- Follow all applicable laws and regulations
-
-### 8. Bug Bounty Programs
-
-BugBounty Arsenal is designed for use with authorized bug bounty programs:
-- HackerOne
-- Bugcrowd
-- Intigriti
-- YesWeHack
-- And other legitimate platforms
-
-Always follow program rules and scope definitions.
-
-### 9. Security Acknowledgments
-
-We appreciate responsible disclosure from:
-- Security researchers who report vulnerabilities
-- Contributors who improve security features
-- Users who provide feedback on safety features
-
-### 10. Contact
-
-For security concerns: **foxvr81@gmail.com**
-For general issues: GitHub Issues
-
----
-
-**Stay ethical. Stay legal. Happy hunting! 🎯**
+Unauthorized access to third-party systems is illegal. Users are responsible for lawful operation of the software.

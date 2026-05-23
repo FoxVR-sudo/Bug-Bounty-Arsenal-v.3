@@ -1,0 +1,24 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="640" rx="36" fill="#08111F"/>
+  <rect x="40" y="40" width="1200" height="560" rx="28" fill="url(#bg)"/>
+  <circle cx="1038" cy="152" r="164" fill="#0F2238"/>
+  <circle cx="1106" cy="126" r="72" fill="#13304D"/>
+  <circle cx="960" cy="472" r="130" fill="#10273F"/>
+  <path d="M164 444C251 358 329 305 399 285C472 264 542 277 609 321C676 364 738 393 794 406C853 420 921 416 998 392" stroke="#49C6E5" stroke-width="16" stroke-linecap="round" opacity="0.9"/>
+  <path d="M167 483C246 423 316 391 377 385C438 379 502 396 568 437C627 473 689 497 753 507C818 517 896 510 987 486" stroke="#7CE38B" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  <rect x="126" y="126" width="116" height="116" rx="26" fill="#0E2136" stroke="#49C6E5" stroke-width="4"/>
+  <path d="M184 151L211 165V194C211 217 196 238 184 245C172 238 157 217 157 194V165L184 151Z" fill="#7CE38B"/>
+  <path d="M174 197L181 204L197 185" stroke="#08111F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="126" y="314" fill="#7CE38B" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="2">AUTHORIZED TESTING</text>
+  <text x="126" y="392" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="700">BugBounty Arsenal v3</text>
+  <text x="126" y="446" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="28">Django, React, Celery, and Redis for managed security scanning workflows</text>
+  <text x="126" y="496" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="28">Detector orchestration, evidence handling, triage, and result review in one stack</text>
+  <rect x="126" y="536" width="246" height="48" rx="24" fill="#0E2136" stroke="#1E496E"/>
+  <text x="156" y="567" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">PUBLIC REPOSITORY</text>
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="1188" y2="602" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1B2A"/>
+      <stop offset="1" stop-color="#13293D"/>
+    </linearGradient>
+  </defs>
+</svg>

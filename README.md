@@ -1,5 +1,7 @@
 # BugBounty Arsenal v3
 
+![BugBounty Arsenal banner](assets/repo-banner.svg)
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Backend: Django](https://img.shields.io/badge/backend-Django%206-0c4b33)]()
 [![Frontend: React](https://img.shields.io/badge/frontend-React%2018-61dafb)]()
