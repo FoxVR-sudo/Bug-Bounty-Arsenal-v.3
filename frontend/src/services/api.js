@@ -147,7 +147,7 @@ export const statsService = {
 
 // Scan usage services
 export const usageService = {
-  getCurrent: () => api.get('/subscriptions/current/'),
+  getCurrent: () => api.get('/usage/current/'),
 };
 
 // Domain ownership verification services

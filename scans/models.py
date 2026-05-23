@@ -360,7 +360,7 @@ class Scan(models.Model):
         # Prefer plan.retention_days when available.
         days = 7
         try:
-            from subscriptions.models import Subscription
+            from usage.models import Subscription
 
             subscription = Subscription.objects.select_related('plan').filter(user=self.user).first()
             if subscription and getattr(subscription, 'plan', None):

@@ -13,7 +13,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from scans.models import Scan
-from subscriptions.models import Subscription
+from usage.models import Subscription
 
 User = get_user_model()
 logger = logging.getLogger(__name__)

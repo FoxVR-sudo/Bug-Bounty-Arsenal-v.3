@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('detector', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='plan_overrides', to='scans.detectorconfig')),
-                ('plan', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='detector_overrides', to='subscriptions.plan')),
+                ('plan', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='detector_overrides', to='usage.plan')),
             ],
             options={
                 'db_table': 'plan_detector_overrides',

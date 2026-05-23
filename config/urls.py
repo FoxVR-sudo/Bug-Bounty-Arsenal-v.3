@@ -35,10 +35,6 @@ from users.auth_views import (
     logout_view,
     oidc_login_view,
     signup_confirm_phone_view,
-    signup_enterprise_confirm_phone_view,
-    signup_enterprise_resend_phone_view,
-    signup_enterprise_start_view,
-    signup_enterprise_view,
     signup_resend_phone_view,
     signup_start_view,
     signup_view,
@@ -62,7 +58,6 @@ from users.landing_views import (
     docs_page,
     landing_page,
     login_page,
-    pricing_page,
     privacy_page,
     security_page,
     signup_page,
@@ -107,14 +102,7 @@ from scans.domain_verification_views import (
     delete_domain_verification,
 )
 from detectors.views import DetectorCategoryViewSet
-from subscriptions.views import SubscriptionViewSet
-from subscriptions.billing_views import (
-    create_checkout_session, billing_portal, buy_extra_scans, change_tier
-)
-from subscriptions.api_views import (
-    get_plans, get_current_subscription, cancel_subscription,
-    change_plan, reactivate_subscription, sync_subscription, upgrade_to_enterprise
-)
+from usage.api_views import get_current_subscription as get_current_usage
 
 from users.team_views import TeamViewSet
 from users.integration_views import IntegrationViewSet
@@ -138,8 +126,6 @@ router.register(r'detector-categories', DetectorCategoryViewSet, basename='detec
 router.register(r'audit-logs', AuditLogViewSet, basename='auditlog')
 router.register(r'scan-audit-logs', ScanAuditLogViewSet, basename='scan-audit-log')
 router.register(r'api-keys', ApiKeyViewSet, basename='apikey')
-# router.register(r'plans', PlanViewSet, basename='plan')  # Using custom endpoint instead
-router.register(r'subscriptions', SubscriptionViewSet, basename='subscription')
 router.register(r'teams', TeamViewSet, basename='team')
 router.register(r'integrations', IntegrationViewSet, basename='integration')
 
@@ -154,7 +140,7 @@ urlpatterns = [
     # Auth pages (HTML forms)
     path('login/', login_page, name='login-page'),
     path('signup/', signup_page, name='signup-page'),
-    path('pricing/', pricing_page, name='pricing-page'),
+    path('pricing/', RedirectView.as_view(url='/', permanent=False), name='pricing-page'),
 
     # Dashboard (requires authentication)
     path('dashboard/', dashboard_page, name='dashboard'),
@@ -184,23 +170,7 @@ urlpatterns = [
     path('api/auth/signup/start/', signup_start_view, name='auth-signup-start'),
     path('api/auth/signup/confirm-phone/', signup_confirm_phone_view, name='auth-signup-confirm-phone'),
     path('api/auth/signup/resend-phone/', signup_resend_phone_view, name='auth-signup-resend-phone'),
-    path(
-        'api/auth/signup-enterprise/start/',
-        signup_enterprise_start_view,
-        name='auth-signup-enterprise-start',
-    ),
-    path(
-        'api/auth/signup-enterprise/confirm-phone/',
-        signup_enterprise_confirm_phone_view,
-        name='auth-signup-enterprise-confirm-phone',
-    ),
-    path(
-        'api/auth/signup-enterprise/resend-phone/',
-        signup_enterprise_resend_phone_view,
-        name='auth-signup-enterprise-resend-phone',
-    ),
     path('api/auth/signup/', signup_view, name='auth-signup'),
-    path('api/auth/signup-enterprise/', signup_enterprise_view, name='auth-signup-enterprise'),
     path('api/auth/refresh/', token_refresh_view, name='auth-refresh'),
     path('api/auth/logout/', logout_view, name='auth-logout'),
     path('api/auth/me/', get_current_user, name='current-user'),
@@ -264,23 +234,8 @@ urlpatterns = [
     path('api/scans/start-category-scan/', start_category_scan, name='start-category-scan'),
     path('api/detectors/statistics/', get_detector_statistics, name='detector-statistics'),
 
-    # NEW v3.1: Plan and subscription endpoints
-    path('api/plans/', get_plans, name='plans-list'),
-    path('api/subscriptions/current/', get_current_subscription, name='subscription-current'),
-    path('api/subscriptions/cancel/', cancel_subscription, name='subscription-cancel'),
-    path('api/subscriptions/change-plan/', change_plan, name='subscription-change-plan'),
-    path('api/subscriptions/reactivate/', reactivate_subscription, name='subscription-reactivate'),
-    path('api/subscriptions/sync/', sync_subscription, name='subscription-sync'),
-    path('api/subscriptions/upgrade-to-enterprise/', upgrade_to_enterprise, name='subscription-upgrade-enterprise'),
-
-    # Billing endpoints
-    path('api/billing/checkout/', create_checkout_session, name='billing-checkout'),
-    path('api/billing/portal/', billing_portal, name='billing-portal'),
-    path('api/billing/buy-scans/', buy_extra_scans, name='buy-extra-scans'),
-    path('api/subscriptions/change-tier/', change_tier, name='change-tier'),
-
-    # Stripe webhook
-    path('api/webhooks/stripe/', include('subscriptions.urls')),
+    # Usage endpoints
+    path('api/usage/current/', get_current_usage, name='usage-current'),
 
     # Admin endpoints (requires admin/staff permissions)
     path('api/admin/stats/', admin_stats, name='admin-stats'),

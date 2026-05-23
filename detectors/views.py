@@ -34,7 +34,7 @@ class DetectorCategoryViewSet(viewsets.ViewSet):
         # If paid plans are enabled, keep existing category gating behavior.
         if paid_enabled and request.user.is_authenticated:
             try:
-                from subscriptions.models import Subscription, Plan, PlanScanCategoryOverride
+                from usage.models import Subscription, Plan, PlanScanCategoryOverride
 
                 subscription = Subscription.objects.filter(
                     user=request.user,
@@ -127,7 +127,7 @@ class DetectorCategoryViewSet(viewsets.ViewSet):
 
         if paid_enabled and request.user.is_authenticated:
             try:
-                from subscriptions.models import Subscription, Plan, PlanScanCategoryOverride
+                from usage.models import Subscription, Plan, PlanScanCategoryOverride
 
                 subscription = Subscription.objects.filter(
                     user=request.user,
@@ -203,7 +203,7 @@ class DetectorCategoryViewSet(viewsets.ViewSet):
 
         if paid_enabled and request.user.is_authenticated:
             try:
-                from subscriptions.models import Subscription, Plan, PlanScanCategoryOverride
+                from usage.models import Subscription, Plan, PlanScanCategoryOverride
 
                 subscription = Subscription.objects.filter(
                     user=request.user,

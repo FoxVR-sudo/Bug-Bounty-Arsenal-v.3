@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('is_active', models.BooleanField(default=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('subscription', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='subscriptions.subscription')),
+                ('subscription', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='usage.subscription')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='enterprise_customer', to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -70,8 +70,8 @@ class Migration(migrations.Migration):
                 ('stripe_invoice_id', models.CharField(blank=True, max_length=100)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('enterprise_customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invoices', to='subscriptions.enterprisecustomer')),
-                ('subscription', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='subscriptions.subscription')),
+                ('enterprise_customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invoices', to='usage.enterprisecustomer')),
+                ('subscription', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='usage.subscription')),
             ],
             options={
                 'db_table': 'invoices',

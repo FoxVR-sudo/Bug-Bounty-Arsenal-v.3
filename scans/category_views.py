@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404
 from scans.category_models import ScanCategory, DetectorConfig
 from scans.models import Scan
 from scans.serializers import ScanSerializer
-from subscriptions.models import Subscription, Plan, PlanScanCategoryOverride
+from usage.models import Subscription, Plan, PlanScanCategoryOverride
 
 from users.scan_audit import create_scan_audit_log
 

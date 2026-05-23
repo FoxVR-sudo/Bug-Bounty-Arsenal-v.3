@@ -253,12 +253,12 @@ class SubscriptionAdmin(admin.ModelAdmin):
     def activate_subscriptions(self, request, queryset):
         queryset.update(status='active')
         self.message_user(request, f'✅ Activated {queryset.count()} subscriptions')
-    activate_subscriptions.short_description = 'Activate selected subscriptions'
+    activate_usage.short_description = 'Activate selected subscriptions'
 
     def cancel_subscriptions(self, request, queryset):
         queryset.update(status='cancelled', cancel_at_period_end=True)
         self.message_user(request, f'⚠️ Cancelled {queryset.count()} subscriptions')
-    cancel_subscriptions.short_description = 'Cancel selected subscriptions'
+    cancel_usage.short_description = 'Cancel selected subscriptions'
 
 
 @admin.register(EnterpriseCustomer)

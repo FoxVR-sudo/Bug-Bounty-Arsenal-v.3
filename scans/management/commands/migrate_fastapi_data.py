@@ -11,7 +11,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from users.models import User
 from scans.models import Scan
-from subscriptions.models import Plan, Subscription
+from usage.models import Plan, Subscription
 
 
 class Command(BaseCommand):

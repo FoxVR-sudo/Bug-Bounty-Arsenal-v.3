@@ -31,7 +31,7 @@ def _try_db_plan_context(plan_name: str):
     plan_obj = None
     overrides_by_category_id: dict[int, bool] = {}
     try:
-        from subscriptions.models import Plan as DbPlan, PlanScanCategoryOverride
+        from usage.models import Plan as DbPlan, PlanScanCategoryOverride
 
         plan_obj = DbPlan.objects.filter(name=plan_key).only('id', 'name', 'allow_dangerous_tools').first()
         if plan_obj is not None:

@@ -54,7 +54,7 @@ Live links: [Open the live app](https://bugbounty-arsenal.net) · [Latest releas
 - `detectors/` active and passive detector implementations
 - `frontend/` React application and static server
 - `scans/` scan models, tasks, APIs, exports, websocket updates
-- `subscriptions/` usage state and related data models
+- `usage/` usage state and related data models
 - `users/` authentication, verification, profile, integrations
 
 ## Quick start

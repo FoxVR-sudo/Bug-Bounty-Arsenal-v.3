@@ -4,7 +4,7 @@ Usage: python manage.py setup_database
 """
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from subscriptions.models import Plan
+from usage.models import Plan
 from scans.category_models import ScanCategory, DetectorConfig
 
 

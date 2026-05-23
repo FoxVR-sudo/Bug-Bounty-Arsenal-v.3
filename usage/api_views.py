@@ -1,6 +1,4 @@
-"""
-API views for subscription and plan management
-"""
+"""Usage and access-control API helpers."""
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -14,10 +12,10 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def _paid_plans_disabled_response():
-    if not bool(getattr(settings, 'PAID_PLANS_ENABLED', True)):
+def _access_controls_disabled_response():
+    if not bool(getattr(settings, 'ACCESS_CONTROLS_ENABLED', False)):
         payload = {
-            'error': 'Paid plans and subscriptions are temporarily disabled.',
+            'error': 'Additional access controls are disabled in this release.',
         }
         donate_url = str(getattr(settings, 'DONATE_URL', '') or '').strip()
         if donate_url:
@@ -76,11 +74,11 @@ def _get_frontend_url(request) -> str:
 @permission_classes([AllowAny])
 def get_plans(request):
     """
-    Get all active plans for pricing page
+    Get all active access profiles.
 
-    GET /api/plans/
+    Legacy endpoint retained for compatibility with deployments that still use access controls.
     """
-    disabled = _paid_plans_disabled_response()
+    disabled = _access_controls_disabled_response()
     if disabled is not None:
         return disabled
 
@@ -116,15 +114,13 @@ def get_plans(request):
 @permission_classes([IsAuthenticated])
 def get_current_subscription(request):
     """
-    Get current user's subscription details with full billing info
+    Get current usage and access details for the signed-in user.
 
-    GET /api/subscriptions/current/
+    Public deployments should expose this via /api/usage/current/.
     """
-    # When paid plans are disabled, return a synthetic enterprise plan so the
-    # UI works and the scanner grants full detector access.
-    if not bool(getattr(settings, 'PAID_PLANS_ENABLED', True)):
+    if not bool(getattr(settings, 'ACCESS_CONTROLS_ENABLED', False)):
         return Response({
-            'plan_name': 'Enterprise',
+            'plan_name': 'Open Source',
             'plan_id': None,
             'daily_scan_limit': 9999,
             'monthly_scan_limit': 9999,
@@ -140,15 +136,15 @@ def get_current_subscription(request):
             'stripe_subscription_id': None,
             'stripe_customer_id': None,
             'plan': {
-                'name': 'enterprise',
-                'display_name': 'Enterprise',
-                'description': 'Full access — billing disabled',
+                'name': 'open-source',
+                'display_name': 'Open Source',
+                'description': 'Full detector access for the open-source release.',
                 'price': 0,
                 'price_yearly': 0,
                 'features': [],
                 'is_popular': False,
             },
-            'is_enterprise': True,
+            'is_enterprise': False,
         })
 
     try:
@@ -187,7 +183,7 @@ def get_current_subscription(request):
                 'features': plan_features,
                 'is_popular': subscription.plan.is_popular,
             },
-            # Check if user is enterprise customer (safe check to avoid DB errors)
+            # Preserve the historical field for compatibility with existing clients.
             'is_enterprise': subscription.plan.name == 'enterprise',
         }
 

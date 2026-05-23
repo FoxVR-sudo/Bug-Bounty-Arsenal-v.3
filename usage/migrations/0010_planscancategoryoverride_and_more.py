@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='planscancategoryoverride',
             name='plan',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='scan_category_overrides', to='subscriptions.plan'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='scan_category_overrides', to='usage.plan'),
         ),
         migrations.RemoveField(
             model_name='plandetectoroverride',

@@ -76,7 +76,7 @@ def get_current_user(request):
     # Get subscription plan
     current_plan = 'Free'
     try:
-        from subscriptions.models import Subscription
+        from usage.models import Subscription
         subscription = Subscription.objects.filter(user=user, status='active').first()
         if subscription:
             current_plan = subscription.plan.display_name

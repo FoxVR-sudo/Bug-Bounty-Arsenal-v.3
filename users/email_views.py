@@ -342,7 +342,7 @@ def verify_email(request):
 
         # Best-effort: create a free subscription record for compatibility (no billing).
         try:
-            from subscriptions.models import Plan, Subscription
+            from usage.models import Plan, Subscription
 
             free_plan = Plan.objects.filter(name__iexact='free').first()
             if free_plan is not None:

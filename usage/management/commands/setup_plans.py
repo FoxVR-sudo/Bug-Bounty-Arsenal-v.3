@@ -3,7 +3,7 @@ Management command to create/update subscription plans
 """
 from django.core.management.base import BaseCommand
 from django.conf import settings
-from subscriptions.models import Plan
+from usage.models import Plan
 
 
 class Command(BaseCommand):

@@ -91,7 +91,6 @@ const CategoryScan = () => {
   const [cancelling, setCancelling] = useState(false);
   const [usageStatus, setUsageStatus] = useState(null);
   const [hasAccess, setHasAccess] = useState(accessControlsEnabled ? null : true);
-  const [availablePlans, setAvailablePlans] = useState([]);
   const [upgradeModal, setUpgradeModal] = useState(null);
   const [showDetectorDetails, setShowDetectorDetails] = useState(false);
   const pollIntervalRef = useRef(null);
@@ -181,19 +180,10 @@ const CategoryScan = () => {
 
   const fetchUsageStatus = useCallback(async () => {
     try {
-      const response = await api.get('/subscriptions/current/');
+      const response = await api.get('/usage/current/');
       setUsageStatus(response.data);
     } catch (err) {
       console.error('Failed to fetch usage data:', err);
-    }
-  }, []);
-
-  const fetchPlans = useCallback(async () => {
-    try {
-      const response = await api.get('/plans/');
-      setAvailablePlans(response.data);
-    } catch (err) {
-      console.error('Failed to fetch plans:', err);
     }
   }, []);
 
@@ -201,11 +191,10 @@ const CategoryScan = () => {
     fetchCategoryData();
     if (accessControlsEnabled) {
       fetchUsageStatus();
-      fetchPlans();
     } else {
       setHasAccess(true);
     }
-  }, [fetchCategoryData, fetchUsageStatus, fetchPlans]);
+  }, [fetchCategoryData, fetchUsageStatus]);
 
   // Check access when both category and subscription are loaded
   useEffect(() => {
@@ -532,53 +521,13 @@ const CategoryScan = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-left">
-              {availablePlans.map((plan) => {
-                const isPopular = plan.is_popular;
-                const dailyLimit = plan.daily_scan_limit === -1 ? 'Unlimited scans per day' : `${plan.daily_scan_limit} scans per day`;
-                
-                return (
-                  <div 
-                    key={plan.id}
-                    className={`rounded-lg p-6 ${
-                      isPopular 
-                        ? 'bg-white text-gray-900 shadow-2xl transform scale-105 border-4 border-yellow-400' 
-                        : 'bg-white bg-opacity-10 backdrop-blur-sm'
-                    }`}
-                  >
-                    {isPopular && (
-                      <div className="text-center mb-2">
-                        <span className="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold">RECOMMENDED</span>
-                      </div>
-                    )}
-                    
-                    <h3 className={`text-lg font-bold mb-2 ${isPopular ? 'text-gray-900' : ''}`}>
-                      {plan.display_name}
-                    </h3>
-                    <div className={`text-base font-semibold mb-4 ${isPopular ? 'text-gray-900' : ''}`}>
-                      {dailyLimit}
-                    </div>
-                    
-                    <ul className={`space-y-2 text-sm ${isPopular ? 'text-gray-700' : ''}`}>
-                      <li>✓ {dailyLimit}</li>
-                      {plan.features && plan.features.slice(0, 6).map((feature, idx) => (
-                        <li key={idx}>✓ {feature}</li>
-                      ))}
-                    </ul>
-
-                    <button 
-                      onClick={() => navigate('/support')}
-                      className={`w-full mt-4 py-3 rounded-lg font-bold transition ${
-                        isPopular
-                          ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:opacity-90'
-                          : 'bg-white bg-opacity-20 hover:bg-opacity-30'
-                      }`}
-                    >
-                      View Support Options
-                    </button>
-                  </div>
-                );
-              })}
+            <div className="max-w-2xl mx-auto mb-8 rounded-lg border border-white border-opacity-20 bg-white bg-opacity-10 backdrop-blur-sm p-6 text-left">
+              <h3 className="text-xl font-bold mb-3">What you can do next</h3>
+              <ul className="space-y-2 text-sm text-white text-opacity-95">
+                <li>Review the target scope and selected detector category.</li>
+                <li>Verify the required email or domain ownership if the scan uses dangerous checks.</li>
+                <li>Use the support page if you need deployment-specific access details.</li>
+              </ul>
             </div>
 
             <button

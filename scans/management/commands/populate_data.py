@@ -2,7 +2,7 @@
 Management command to populate initial data for production
 """
 from django.core.management.base import BaseCommand
-from subscriptions.models import Plan
+from usage.models import Plan
 from scans.models import ScanCategory
 
 

@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('last_scan_reset', models.DateField(auto_now_add=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('plan', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='subscriptions', to='subscriptions.plan')),
+                ('plan', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='subscriptions', to='usage.plan')),
             ],
             options={
                 'db_table': 'subscriptions',

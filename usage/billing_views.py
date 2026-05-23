@@ -9,8 +9,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from drf_spectacular.utils import extend_schema
 from django.conf import settings
-from subscriptions.models import Plan
-from subscriptions.stripe_service import StripeService
+from usage.models import Plan
+from usage.stripe_service import StripeService
 import logging
 
 logger = logging.getLogger(__name__)
@@ -168,7 +168,7 @@ def billing_portal(request):
         stripe.api_key = stripe_key
 
         # Get user's subscription
-        from subscriptions.models import Subscription
+        from usage.models import Subscription
         subscription = Subscription.objects.filter(
             user=request.user,
             status='active'
@@ -248,7 +248,7 @@ def buy_extra_scans(request):
 
     if not stripe_key or stripe_key.startswith('sk_test_') is False:
         # Test mode - add scans immediately
-        from subscriptions.models import Subscription
+        from usage.models import Subscription
         subscription = Subscription.objects.filter(
             user=request.user,
             status='active'
@@ -356,7 +356,7 @@ def change_tier(request):
             return Response(payload, status=status.HTTP_410_GONE)
 
     try:
-        from subscriptions.models import Subscription, Plan
+        from usage.models import Subscription, Plan
 
         # Get current subscription
         subscription = Subscription.objects.filter(

@@ -169,7 +169,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'users',
     'scans',
-    'subscriptions',
+    'usage',
 ]
 
 MIDDLEWARE = [
@@ -816,8 +816,8 @@ JAZZMIN_SETTINGS = {
         "users.user": "fas fa-user",
         "scans.scan": "fas fa-search",
         "scans.vulnerability": "fas fa-bug",
-        "subscriptions.subscription": "fas fa-credit-card",
-        "subscriptions.subscriptionplan": "fas fa-list",
+        "usage.subscription": "fas fa-credit-card",
+        "usage.subscriptionplan": "fas fa-list",
     },
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",

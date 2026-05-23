@@ -169,7 +169,7 @@ def signup_confirm_phone_view(request):
     from users.models import PendingSignup
     from users.models import User
     from users.serializers import UserSerializer
-    from subscriptions.models import Plan, Subscription
+    from usage.models import Plan, Subscription
 
     token = str(request.data.get('signup_token', '') or '').strip()
     code = str(request.data.get('code', '') or '').strip()
@@ -457,8 +457,8 @@ def signup_enterprise_confirm_phone_view(request):
     from django.contrib.auth.hashers import check_password
     from users.models import PendingSignup, User
     from users.serializers import UserSerializer
-    from subscriptions.models import Plan, Subscription, EnterpriseCustomer
-    from subscriptions.stripe_service import StripeService
+    from usage.models import Plan, Subscription, EnterpriseCustomer
+    from usage.stripe_service import StripeService
 
     token = str(request.data.get('signup_token', '') or '').strip()
     code = str(request.data.get('code', '') or '').strip()
