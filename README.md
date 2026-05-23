@@ -10,6 +10,8 @@
 
 BugBounty Arsenal is a full-stack platform for running authorized web application security scans, collecting evidence, and triaging results from a single interface.
 
+The public edition is completely free in this release. Paid plans and private billing flows are not enabled here.
+
 The public edition focuses on development-safe source code. Operational runbooks, environment-specific deployment assets, customer evidence, and private testing material are intentionally excluded.
 
 ## What it includes

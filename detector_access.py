@@ -1,9 +1,11 @@
 """
-Subscription tier definitions for detector access control
+Detector access definitions for the public free edition and optional private tiers.
+
+When PAID_PLANS_ENABLED is false, the scanner allows the full detector set.
 """
 
-# Basic tier detectors (free)
-BASIC_DETECTORS = [
+# Core detectors available in the baseline free experience
+CORE_DETECTORS = [
     'reflection_detector',
     'sql_pattern_detector',
     'xss_pattern_detector',
@@ -12,8 +14,8 @@ BASIC_DETECTORS = [
     'dir_listing_detector',
 ]
 
-# Advanced tier detectors
-ADVANCED_DETECTORS = BASIC_DETECTORS + [
+# Extended detector set used by private tiers when paid plans are enabled
+EXTENDED_DETECTORS = CORE_DETECTORS + [
     'ssrf_detector',
     'advanced_ssrf_detector',
     'csrf_detector',
@@ -26,8 +28,8 @@ ADVANCED_DETECTORS = BASIC_DETECTORS + [
     'ssti_detector',
 ]
 
-# Enterprise tier detectors (all)
-ENTERPRISE_DETECTORS = ADVANCED_DETECTORS + [
+# Full detector set used by the free public edition and any all-access private tiers
+FULL_DETECTOR_SET = EXTENDED_DETECTORS + [
     'ssrf_oob_detector',
     'graphql_detector',
     'jwt_detector',
@@ -49,8 +51,6 @@ ENTERPRISE_DETECTORS = ADVANCED_DETECTORS + [
     'basic_param_fuzzer',
     'fuzz_detector',
     'injector',
-
-    # Utility/OSINT-style modules that are now wired into the async detector registry
     'api_docs_discovery',
     'js_file_analyzer',
     'backup_file_hunter',
@@ -61,8 +61,6 @@ ENTERPRISE_DETECTORS = ADVANCED_DETECTORS + [
     'nuclei_detector',
     'ssrf_oob_advanced_detector',
     'business_logic_detector',
-
-    # External tool detectors (Go tools + nmap)
     'subfinder_detector',
     'amass_detector',
     'httpx_detector',
@@ -71,17 +69,13 @@ ENTERPRISE_DETECTORS = ADVANCED_DETECTORS + [
     'dalfox_detector',
     'ffuf_idor_detector',
     'nmap_detector',
-
-    # Mobile security
     'apk_analyzer_detector',
     'ios_scanner_detector',
-
-    # OOB / interactsh
     'interactsh_client',
 ]
 
-# Dangerous detectors requiring verified access in free mode
-DANGEROUS_DETECTORS = [
+# Detectors that remain verification-gated even in the free edition
+VERIFICATION_GATED_DETECTORS = [
     'fuzz_detector',
     'file_upload_detector',
     'brute_force_detector',

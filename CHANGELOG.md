@@ -2,6 +2,12 @@
 
 All notable public-release changes for this repository are documented here.
 
+## v3.0.4 - 2026-05-23
+
+- renamed the public detector access module from `subscription.py` to `detector_access.py`
+- clarified in the README that the public edition is fully free in this release
+- tightened the walkthrough badge copy so the scope-consent label no longer overflows
+
 ## v3.0.3 - 2026-05-23
 
 - fixed the walkthrough asset layout so card text stays within its panels

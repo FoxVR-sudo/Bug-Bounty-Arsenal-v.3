@@ -74,7 +74,7 @@ import detectors.ios_scanner_detector
 import detectors.nmap_detector
 
 from detectors.registry import ACTIVE_DETECTORS, PASSIVE_DETECTORS, DetectorSkip
-from subscription import BASIC_DETECTORS, ADVANCED_DETECTORS, ENTERPRISE_DETECTORS, DANGEROUS_DETECTORS
+from detector_access import CORE_DETECTORS, EXTENDED_DETECTORS, FULL_DETECTOR_SET, VERIFICATION_GATED_DETECTORS
 import crawler
 from utils.cloudflare_bypass import CloudflareBypass, get_bypass_config
 from utils.cloudflare_solver import CloudflareSolver
@@ -887,18 +887,18 @@ async def scan_single_url(
 
         # Get allowed detectors based on tier (unless paid plans are disabled)
         if not paid_plans_enabled:
-            allowed_by_tier = set(ENTERPRISE_DETECTORS)
+            allowed_by_tier = set(FULL_DETECTOR_SET)
         elif user_tier == "free":
-            allowed_by_tier = set(BASIC_DETECTORS)
+            allowed_by_tier = set(CORE_DETECTORS)
         elif user_tier == "basic":
-            allowed_by_tier = set(BASIC_DETECTORS + ADVANCED_DETECTORS[:5])
+            allowed_by_tier = set(CORE_DETECTORS + EXTENDED_DETECTORS[:5])
         elif user_tier == "pro":
-            allowed_by_tier = set(BASIC_DETECTORS + ADVANCED_DETECTORS)
+            allowed_by_tier = set(CORE_DETECTORS + EXTENDED_DETECTORS)
         elif user_tier == "enterprise":
-            allowed_by_tier = set(BASIC_DETECTORS + ADVANCED_DETECTORS + ENTERPRISE_DETECTORS)
+            allowed_by_tier = set(CORE_DETECTORS + EXTENDED_DETECTORS + FULL_DETECTOR_SET)
         else:
             # Default to free tier if unknown
-            allowed_by_tier = set(BASIC_DETECTORS)
+            allowed_by_tier = set(CORE_DETECTORS)
 
         dangerous_required = str(
             os.environ.get("DANGEROUS_TOOLS_REQUIRE_EMAIL_VERIFICATION", "true")
@@ -958,7 +958,7 @@ async def scan_single_url(
                     })
                 continue
 
-            if dangerous_required and not dangerous_allowed and detector_key in DANGEROUS_DETECTORS:
+            if dangerous_required and not dangerous_allowed and detector_key in VERIFICATION_GATED_DETECTORS:
                 if isinstance(skipped_sink, list) and enabled_detectors is not None and detector_key in requested_keys:
                     reason = "Requires verified domain (dangerous detector)"
                     if dangerous_skip_reason == "email_verification":

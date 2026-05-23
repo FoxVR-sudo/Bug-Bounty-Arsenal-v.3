@@ -12,8 +12,8 @@
   <text x="112" y="384" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">a scan category, and</text>
   <text x="112" y="410" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">confirm you are</text>
   <text x="112" y="436" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">authorized to test.</text>
-  <rect x="112" y="476" width="208" height="46" rx="12" fill="#0C1A29" stroke="#234B6E"/>
-  <text x="139" y="505" fill="#7CE38B" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Consent + scope setup</text>
+  <rect x="112" y="476" width="224" height="46" rx="12" fill="#0C1A29" stroke="#234B6E"/>
+  <text x="224" y="505" fill="#7CE38B" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" text-anchor="middle">Scope + consent</text>
 
   <rect x="368" y="196" width="260" height="376" rx="24" fill="#112235" stroke="#1B4468"/>
   <rect x="396" y="228" width="56" height="56" rx="18" fill="#153956"/>
