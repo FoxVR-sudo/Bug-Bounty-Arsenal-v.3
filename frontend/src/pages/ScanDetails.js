@@ -295,7 +295,7 @@ const ScanDetails = () => {
       } else if (status === 404) {
         toast.error('Report not found. If the scan just finished, wait a moment and try again.');
       } else if (status === 402 || status === 403) {
-        toast.error('Your plan does not allow this export. Please upgrade to continue.');
+        toast.error('This export is not available for the current scan or deployment settings.');
       } else {
         toast.error(error?.message ? `Failed to download report: ${error.message}` : 'Failed to download report');
       }

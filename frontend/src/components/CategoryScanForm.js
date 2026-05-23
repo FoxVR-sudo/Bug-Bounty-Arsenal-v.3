@@ -7,15 +7,6 @@ import FieldError from './forms/FieldError';
 import { isNonEmpty } from '../lib/validation';
 import api from '../services/api';
 
-const planRank = (plan, isEnterpriseOnly) => {
-  // Some APIs expose enterprise gating via boolean instead of required_plan
-  if (isEnterpriseOnly) return 2;
-  if (plan === 'free') return 0;
-  if (plan === 'pro') return 1;
-  if (plan === 'enterprise') return 2;
-  return 99;
-};
-
 const CategoryScanForm = ({ onScanCreated }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -63,14 +54,9 @@ const CategoryScanForm = ({ onScanCreated }) => {
       const response = await api.get('/scan-categories/');
       const nextCategories = (response.data || [])
         .slice()
-        .sort((a, b) => {
-          const aRank = planRank(a?.required_plan, a?.is_enterprise_only);
-          const bRank = planRank(b?.required_plan, b?.is_enterprise_only);
-          if (aRank !== bRank) return aRank - bRank;
-          return String(a?.display_name || a?.name || '').localeCompare(
-            String(b?.display_name || b?.name || '')
-          );
-        });
+        .sort((a, b) => String(a?.display_name || a?.name || '').localeCompare(
+          String(b?.display_name || b?.name || '')
+        ));
       setCategories(nextCategories);
     } catch (err) {
       setError('Failed to load scan categories');
@@ -284,16 +270,6 @@ const CategoryScanForm = ({ onScanCreated }) => {
                     <span className="text-2xl text-primary">
                       {getScanCategoryIcon(category.name, { size: 22 })}
                     </span>
-                    {category.is_enterprise_only && (
-                      <span className="text-xs px-2 py-0.5 rounded bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-200 font-semibold">
-                        ENT
-                      </span>
-                    )}
-                    {category.required_plan === 'pro' && (
-                      <span className="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-200 font-semibold">
-                        PRO
-                      </span>
-                    )}
                   </div>
                   <h4 className="font-bold text-gray-900 dark:text-white mb-1">{category.display_name}</h4>
                   <p className="text-xs text-gray-600 dark:text-gray-300 mb-2">{category.description}</p>

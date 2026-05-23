@@ -35,13 +35,9 @@ api.interceptors.request.use(
       '/auth/signup/start/',
       '/auth/signup/confirm-phone/',
       '/auth/signup/resend-phone/',
-      '/auth/signup-enterprise/start/',
-      '/auth/signup-enterprise/confirm-phone/',
-      '/auth/signup-enterprise/resend-phone/',
       '/auth/request-reset/',
       '/auth/reset-password/',
       '/auth/verify-email/',
-      '/plans/',
     ];
     const isPublicEndpoint = publicEndpoints.some(endpoint => config.url?.includes(endpoint));
     
@@ -96,9 +92,6 @@ export const authService = {
   registerStart: (userData) => api.post('/auth/signup/start/', userData),
   signupConfirmPhone: (signup_token, code) => api.post('/auth/signup/confirm-phone/', { signup_token, code }),
   signupResendPhone: (signup_token) => api.post('/auth/signup/resend-phone/', { signup_token }),
-  enterpriseRegisterStart: (userData) => api.post('/auth/signup-enterprise/start/', userData),
-  enterpriseConfirmPhone: (payload) => api.post('/auth/signup-enterprise/confirm-phone/', payload),
-  enterpriseResendPhone: (signup_token) => api.post('/auth/signup-enterprise/resend-phone/', { signup_token }),
   logout: () => {
     clearAuthStorage();
   },
@@ -152,8 +145,8 @@ export const statsService = {
   getOverview: () => api.get('/scans/stats/'),
 };
 
-// Subscription services
-export const subscriptionService = {
+// Scan usage services
+export const usageService = {
   getCurrent: () => api.get('/subscriptions/current/'),
 };
 

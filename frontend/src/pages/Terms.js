@@ -88,14 +88,15 @@ const Terms = () => {
             <li>False positives or missed vulnerabilities</li>
           </ul>
 
-          <h2>7. Subscription Plans and Pricing</h2>
+          <h2>7. Free Public Edition</h2>
           <p>
-            Subscription tiers, features, and current pricing are described in-app on the{' '}
-            <Link to="/pricing" className="text-primary hover:underline">Pricing</Link> page.
+            This public edition of BugBounty Arsenal is provided free of charge in its current release.
+            Optional donations may be offered to support hosting and maintenance, but payment is not required
+            to access the public feature set.
           </p>
           <p>
-            Subscriptions may renew automatically unless cancelled. We may change pricing and plan limits
-            from time to time, with notice as required.
+            Some high-risk actions may still require email or domain verification as a safety control.
+            Verification requirements are separate from pricing and are intended to reduce abuse.
           </p>
 
           <h2>8. Account Termination</h2>
@@ -106,7 +107,7 @@ const Terms = () => {
             <li>Violate these Terms of Service</li>
             <li>Engage in illegal scanning activities</li>
             <li>Abuse the Service or infrastructure</li>
-            <li>Fail to pay subscription fees</li>
+            <li>Repeatedly evade safety controls or verification requirements</li>
           </ul>
 
           <h2>9. Intellectual Property</h2>

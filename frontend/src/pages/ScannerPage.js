@@ -5,7 +5,7 @@ import { scanService } from '../services/api';
 import { FiPlay, FiSettings, FiAlertCircle, FiCheckCircle, FiClock } from 'react-icons/fi';
 import DashboardLayout from '../components/DashboardLayout';
 import ScanConsentGate from '../components/ScanConsentGate';
-import SubscriptionUsageHeader from '../components/SubscriptionUsageHeader';
+import ScanUsageHeader from '../components/ScanUsageHeader';
 import UpgradeModal from '../components/UpgradeModal';
 import { useToast } from '../contexts/ToastContext';
 import LoadingState from '../components/states/LoadingState';
@@ -324,16 +324,16 @@ const ScannerPage = () => {
         setUpgradeModal({
           title: 'Scan limit reached',
           message,
-          bullets: ['Higher daily/monthly limits', 'Advanced scanners', 'Priority support'],
+          bullets: ['Wait for the next limit window', 'Reduce the target scope if possible', 'Open Support for current free-edition limits'],
         });
         return;
       }
 
       if (status === 403) {
         setUpgradeModal({
-          title: 'Upgrade required',
+          title: 'Action blocked',
           message,
-          bullets: ['Higher limits', 'More detectors', 'Teams & integrations'],
+          bullets: ['Check whether the target is in scope', 'Verify the required email or domain ownership if prompted', 'Open Support for deployment details'],
         });
         return;
       }
@@ -412,7 +412,7 @@ const ScannerPage = () => {
                 <FiPlay className="text-primary" />
                 Start New Scan
               </h2>
-              <SubscriptionUsageHeader className="mb-4" />
+              <ScanUsageHeader className="mb-4" />
               <form onSubmit={handleScan} className="space-y-4" noValidate>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">

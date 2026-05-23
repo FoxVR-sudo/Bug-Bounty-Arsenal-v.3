@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { scanService, statsService, subscriptionService, userService } from '../services/api';
+import { scanService, statsService, usageService, userService } from '../services/api';
 import { FiPlus, FiDownload, FiEye, FiActivity, FiCheckCircle, FiClock, FiAlertTriangle, FiSmartphone } from 'react-icons/fi';
 import { format } from 'date-fns';
 import DashboardLayout from '../components/DashboardLayout';
@@ -17,7 +17,7 @@ const Dashboard = () => {
   const toast = useToast();
   const [showNewScan, setShowNewScan] = useState(false);
   const [showDonation, setShowDonation] = useState(false);
-  const [subscription, setSubscription] = useState(null);
+  const [usageStatus, setUsageStatus] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [scanSearch, setScanSearch] = useState('');
   const [debouncedScanSearch, setDebouncedScanSearch] = useState('');
@@ -103,9 +103,9 @@ const Dashboard = () => {
     statsService.getOverview().then((res) => res.data)
   );
 
-  // Fetch subscription info
+  // Fetch scan usage info
   useEffect(() => {
-    fetchSubscription();
+    fetchUsageStatus();
     fetchUserInfo();
 
     // Re-fetch userInfo when geo location is saved (after ipapi.co lookup)
@@ -118,8 +118,8 @@ const Dashboard = () => {
       const subscriptionUpdated = localStorage.getItem('subscription_updated');
       if (subscriptionUpdated === 'true') {
         localStorage.removeItem('subscription_updated');
-        console.log('Window focused - refreshing subscription data...');
-        fetchSubscription();
+        console.log('Window focused - refreshing usage data...');
+        fetchUsageStatus();
         fetchUserInfo();
         refetch(); // Refetch scans
       }
@@ -129,14 +129,14 @@ const Dashboard = () => {
     const handleStorageChange = (e) => {
       if (e.key === 'subscription_updated' && e.newValue === 'true') {
         localStorage.removeItem('subscription_updated');
-        console.log('Storage event - refreshing subscription data...');
-        fetchSubscription();
+        console.log('Storage event - refreshing usage data...');
+        fetchUsageStatus();
         fetchUserInfo();
         refetch();
       }
     };
     
-    // Auto-refresh subscription data every 30 seconds to update scan counters
+    // Auto-refresh usage data to update scan counters
     const refreshInterval = setInterval(() => {
       // Avoid noisy polling when tab is not visible
       if (document.visibilityState !== 'visible') return;
@@ -144,7 +144,7 @@ const Dashboard = () => {
       const now = Date.now();
       if (now < pollStateRef.backoffUntil) return;
 
-      fetchSubscription({ _pollState: pollStateRef, isPoll: true });
+      fetchUsageStatus({ _pollState: pollStateRef, isPoll: true });
     }, 60000); // 60 seconds
     
     window.addEventListener('focus', handleFocus);
@@ -168,11 +168,11 @@ const Dashboard = () => {
     }
   };
 
-  const fetchSubscription = async (opts = {}) => {
+  const fetchUsageStatus = async (opts = {}) => {
     const { _pollState, isPoll } = opts || {};
     try {
-      const response = await subscriptionService.getCurrent();
-      setSubscription(response.data);
+      const response = await usageService.getCurrent();
+      setUsageStatus(response.data);
 
       if (_pollState) {
         _pollState.failCount = 0;
@@ -188,7 +188,7 @@ const Dashboard = () => {
         if (_pollState.failCount >= 3) {
           _pollState.backoffUntil = Date.now() + 5 * 60 * 1000;
           if (!_pollState.warned) {
-            console.warn('Subscription endpoint is failing (5xx); pausing refresh for 5 minutes.');
+            console.warn('Usage endpoint is failing (5xx); pausing refresh for 5 minutes.');
             _pollState.warned = true;
           }
         }
@@ -196,7 +196,7 @@ const Dashboard = () => {
 
       // Only log full error details for non-poll calls to reduce console noise.
       if (!isPoll) {
-        console.error('Failed to fetch subscription:', err);
+        console.error('Failed to fetch usage data:', err);
       }
     }
   };
@@ -297,7 +297,7 @@ const Dashboard = () => {
               </p>
             )}
           </div>
-          {subscription && subscription.daily_scan_limit !== null && subscription.scans_used_today >= subscription.daily_scan_limit ? (
+          {usageStatus && usageStatus.daily_scan_limit !== null && usageStatus.scans_used_today >= usageStatus.daily_scan_limit ? (
             <div className="flex items-center gap-3">
               <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
                 Daily limit reached

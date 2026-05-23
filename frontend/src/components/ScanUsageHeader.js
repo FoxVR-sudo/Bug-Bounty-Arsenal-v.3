@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { subscriptionService } from '../services/api';
+import { usageService } from '../services/api';
 
 const formatInfinity = (limit) => (limit === -1 ? '∞' : String(limit ?? '—'));
 
 const toNumber = (value) => (typeof value === 'number' && Number.isFinite(value) ? value : 0);
 
-export default function SubscriptionUsageHeader({ className = '' }) {
-  const { data } = useQuery(['subscription-current'], () => subscriptionService.getCurrent().then((r) => r.data), {
+export default function ScanUsageHeader({ className = '' }) {
+  const { data } = useQuery(['usage-current'], () => usageService.getCurrent().then((r) => r.data), {
     retry: 0,
   });
 
@@ -30,8 +30,8 @@ export default function SubscriptionUsageHeader({ className = '' }) {
     >
       <div className="flex items-center justify-between gap-3 mb-3">
         <div className="text-sm font-semibold text-gray-900 dark:text-white">Usage</div>
-        <Link to="/subscription" className="ui-btn ui-btn-ghost text-xs px-2 py-1">
-          Manage
+        <Link to="/support" className="ui-btn ui-btn-ghost text-xs px-2 py-1">
+          Support
         </Link>
       </div>
 

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { FiAlertTriangle, FiCreditCard } from 'react-icons/fi';
+import { FiAlertTriangle, FiArrowRight } from 'react-icons/fi';
 import useModalA11y from '../hooks/useModalA11y';
 
 export default function UpgradeModal({
@@ -9,8 +9,8 @@ export default function UpgradeModal({
   message,
   bullets,
   onClose,
-  ctaHref = '/subscription',
-  ctaLabel = 'Upgrade Now',
+  ctaHref = '/support',
+  ctaLabel = 'Open Support',
 }) {
   const dialogRef = useModalA11y(open, { onClose });
   const titleId = useMemo(() => `upgrade-modal-title-${Math.random().toString(36).slice(2)}`, []);
@@ -44,13 +44,13 @@ export default function UpgradeModal({
             {title}
           </h3>
           <p id={descId} className="text-sm text-gray-600 dark:text-gray-300">
-            {message || 'Upgrade required to continue.'}
+            {message || 'This action is unavailable right now.'}
           </p>
         </div>
 
         {list.length > 0 ? (
           <div className="rounded-lg p-4 mb-6 border bg-blue-50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-800/40">
-            <p className="text-sm font-semibold mb-2 text-blue-900 dark:text-blue-200">Upgrade and get:</p>
+            <p className="text-sm font-semibold mb-2 text-blue-900 dark:text-blue-200">What to do next:</p>
             <ul className="text-sm text-left space-y-1 text-blue-800 dark:text-blue-200/90">
               {list.map((item) => (
                 <li key={item}>✓ {item}</li>
@@ -64,7 +64,7 @@ export default function UpgradeModal({
             Close
           </button>
           <Link to={ctaHref} className="ui-btn ui-btn-primary flex-1 justify-center flex items-center gap-2">
-            <FiCreditCard /> {ctaLabel}
+            <FiArrowRight /> {ctaLabel}
           </Link>
         </div>
       </div>

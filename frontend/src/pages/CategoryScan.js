@@ -5,7 +5,7 @@ import DashboardLayout from '../components/DashboardLayout';
 import LoadingState from '../components/states/LoadingState';
 import ErrorState from '../components/states/ErrorState';
 import ScanConsentGate from '../components/ScanConsentGate';
-import SubscriptionUsageHeader from '../components/SubscriptionUsageHeader';
+import ScanUsageHeader from '../components/ScanUsageHeader';
 import UpgradeModal from '../components/UpgradeModal';
 import FieldError from '../components/forms/FieldError';
 import { useToast } from '../contexts/ToastContext';
@@ -13,6 +13,7 @@ import { getScanCategoryIcon } from '../lib/icons';
 import { isNonEmpty } from '../lib/validation';
 import useScanWebsocket from '../hooks/useScanWebsocket';
 import { isWsEnabled } from '../lib/websocket';
+import { paidPlansEnabled, publicFreeEdition } from '../config/features';
 import api from '../services/api';
 import { domainVerifyService } from '../services/api';
 
@@ -88,9 +89,9 @@ const CategoryScan = () => {
   const [activeScanId, setActiveScanId] = useState(null);
   const [liveScanDetails, setLiveScanDetails] = useState(null);
   const [cancelling, setCancelling] = useState(false);
-  const [subscription, setSubscription] = useState(null);
-  const [hasAccess, setHasAccess] = useState(null); // null = loading, true = access, false = no access
-  const [plans, setPlans] = useState([]); // For upgrade page
+  const [usageStatus, setUsageStatus] = useState(null);
+  const [hasAccess, setHasAccess] = useState(paidPlansEnabled ? null : true);
+  const [availablePlans, setAvailablePlans] = useState([]);
   const [upgradeModal, setUpgradeModal] = useState(null);
   const [showDetectorDetails, setShowDetectorDetails] = useState(false);
   const pollIntervalRef = useRef(null);
@@ -178,19 +179,19 @@ const CategoryScan = () => {
     }
   }, [categoryId, navigate, toast]);
 
-  const fetchSubscription = useCallback(async () => {
+  const fetchUsageStatus = useCallback(async () => {
     try {
       const response = await api.get('/subscriptions/current/');
-      setSubscription(response.data);
+      setUsageStatus(response.data);
     } catch (err) {
-      console.error('Failed to fetch subscription:', err);
+      console.error('Failed to fetch usage data:', err);
     }
   }, []);
 
   const fetchPlans = useCallback(async () => {
     try {
       const response = await api.get('/plans/');
-      setPlans(response.data);
+      setAvailablePlans(response.data);
     } catch (err) {
       console.error('Failed to fetch plans:', err);
     }
@@ -198,16 +199,24 @@ const CategoryScan = () => {
 
   useEffect(() => {
     fetchCategoryData();
-    fetchSubscription();
-    fetchPlans();
-  }, [fetchCategoryData, fetchSubscription, fetchPlans]);
+    if (paidPlansEnabled) {
+      fetchUsageStatus();
+      fetchPlans();
+    } else {
+      setHasAccess(true);
+    }
+  }, [fetchCategoryData, fetchUsageStatus, fetchPlans]);
 
   // Check access when both category and subscription are loaded
   useEffect(() => {
-    if (category && subscription) {
+    if (!paidPlansEnabled) {
+      setHasAccess(true);
+      return;
+    }
+
+    if (category && usageStatus) {
       const planHierarchy = { 'free': 0, 'pro': 1, 'pro plan': 1, 'enterprise': 2 };
-      // subscription has plan_name, not plan.name
-      const userPlanName = (subscription.plan_name || subscription.plan?.name || 'free').toLowerCase();
+      const userPlanName = (usageStatus.plan_name || usageStatus.plan?.name || 'free').toLowerCase();
       const userPlanLevel = planHierarchy[userPlanName] || 0;
       const requiredPlanLevel = planHierarchy[category.required_plan?.toLowerCase()] || 0;
       
@@ -221,13 +230,13 @@ const CategoryScan = () => {
       });
       
       setHasAccess(userPlanLevel >= requiredPlanLevel);
-    } else if (category && !subscription) {
+    } else if (category && !usageStatus) {
       // If subscription hasn't loaded yet, check if it's a free category
       const isFree = category.required_plan?.toLowerCase() === 'free';
       console.log('No subscription loaded, category:', category.name, 'is free?', isFree);
       setHasAccess(isFree);
     }
-  }, [category, subscription]);
+  }, [category, usageStatus]);
 
   const handleStartScan = async (e) => {
     e.preventDefault();
@@ -280,8 +289,8 @@ const CategoryScan = () => {
       if (err.response?.status === 402) {
         setUpgradeModal({
           title: 'Scan limit reached',
-          message: err.response?.data?.error || 'Your plan scan limit has been reached.',
-          bullets: ['Higher daily/monthly limits', 'More detectors & categories', 'Priority support'],
+          message: err.response?.data?.error || 'The scan limit for this deployment has been reached.',
+          bullets: ['Wait for the next limit window', 'Reduce the target scope if possible', 'Open Support for the current public-edition limits'],
         });
       } else if (err.response?.status === 403 && err.response?.data?.requires_domain_verification) {
         const domain = err.response.data.domain || 'this domain';
@@ -294,9 +303,9 @@ const CategoryScan = () => {
         });
       } else if (err.response?.status === 403) {
         setUpgradeModal({
-          title: 'Upgrade required',
-          message: err.response?.data?.detail || err.response?.data?.error || 'This action requires a higher plan.',
-          bullets: ['Higher limits', 'Teams & integrations', 'Advanced scanners'],
+          title: 'Access limited',
+          message: err.response?.data?.detail || err.response?.data?.error || 'This action is currently unavailable on this deployment.',
+          bullets: ['Verify domain ownership for dangerous scanners', 'Confirm the target is in scope', 'Open Support for deployment details'],
         });
       } else {
         const status = err.response?.status;
@@ -490,7 +499,7 @@ const CategoryScan = () => {
           <div className="flex items-center gap-4 mb-2">
             <span className="text-4xl text-primary">{getScanCategoryIcon(category.name, { size: 36 })}</span>
             <h1 className="ui-title">{category.display_name}</h1>
-            {category.required_plan !== 'free' && (
+            {paidPlansEnabled && category.required_plan !== 'free' && (
               <span className="px-3 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-200 rounded-full text-sm font-semibold uppercase">
                 {category.required_plan}
               </span>
@@ -508,19 +517,19 @@ const CategoryScan = () => {
                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                 </svg>
               </div>
-              <h2 className="text-3xl font-bold mb-4">Upgrade Required</h2>
+              <h2 className="text-3xl font-bold mb-4">Access Limited</h2>
               <p className="text-xl mb-2">
-                {category.display_name} scanner requires a <span className="font-bold">{category.required_plan.toUpperCase()}</span> plan
+                {category.display_name} is restricted on deployments that enable additional access controls.
               </p>
               <p className="text-white text-opacity-90 mb-8">
-                You are currently on the <span className="font-semibold">{subscription?.plan?.display_name || 'Free'}</span> plan
+                Current access level: <span className="font-semibold">{usageStatus?.plan?.display_name || 'Standard'}</span>
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-left">
-              {plans.map((plan, index) => {
-                const isFree = plan.price === 0 || plan.price === '0.00';
+              {availablePlans.map((plan) => {
                 const isPopular = plan.is_popular;
+                const dailyLimit = plan.daily_scan_limit === -1 ? 'Unlimited scans per day' : `${plan.daily_scan_limit} scans per day`;
                 
                 return (
                   <div 
@@ -540,30 +549,27 @@ const CategoryScan = () => {
                     <h3 className={`text-lg font-bold mb-2 ${isPopular ? 'text-gray-900' : ''}`}>
                       {plan.display_name}
                     </h3>
-                    <div className={`text-2xl font-bold mb-4 ${isPopular ? 'text-gray-900' : ''}`}>
-                      {isFree ? 'Free' : `$${plan.price}`}
-                      <span className="text-sm">/month</span>
+                    <div className={`text-base font-semibold mb-4 ${isPopular ? 'text-gray-900' : ''}`}>
+                      {dailyLimit}
                     </div>
                     
                     <ul className={`space-y-2 text-sm ${isPopular ? 'text-gray-700' : ''}`}>
-                      <li>✓ {plan.daily_scan_limit === -1 ? 'Unlimited' : plan.daily_scan_limit} scans per day</li>
+                      <li>✓ {dailyLimit}</li>
                       {plan.features && plan.features.slice(0, 6).map((feature, idx) => (
                         <li key={idx}>✓ {feature}</li>
                       ))}
                     </ul>
-                    
-                    {!isFree && (
-                      <button 
-                        onClick={() => navigate('/pricing')}
-                        className={`w-full mt-4 py-3 rounded-lg font-bold transition ${
-                          isPopular
-                            ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:opacity-90'
-                            : 'bg-white bg-opacity-20 hover:bg-opacity-30'
-                        }`}
-                      >
-                        {plan.name === 'enterprise' ? 'Contact Sales' : `Upgrade to ${plan.display_name}`}
-                      </button>
-                    )}
+
+                    <button 
+                      onClick={() => navigate('/support')}
+                      className={`w-full mt-4 py-3 rounded-lg font-bold transition ${
+                        isPopular
+                          ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:opacity-90'
+                          : 'bg-white bg-opacity-20 hover:bg-opacity-30'
+                      }`}
+                    >
+                      View Support Options
+                    </button>
                   </div>
                 );
               })}
@@ -579,7 +585,7 @@ const CategoryScan = () => {
         ) : (
           /* Scanner Form - Show only if user has access */
           <>
-          <SubscriptionUsageHeader className="mb-6" />
+          <ScanUsageHeader className="mb-6" />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left: Configuration */}
@@ -1073,7 +1079,7 @@ const CategoryScan = () => {
                     </div>
                   )}
                   <div>
-                    <strong>Required Plan:</strong> {category.required_plan.toUpperCase()}
+                    <strong>{publicFreeEdition ? 'Edition' : 'Access'}:</strong> {publicFreeEdition ? 'Free public build' : category.required_plan.toUpperCase()}
                   </div>
                 </div>
               </div>
