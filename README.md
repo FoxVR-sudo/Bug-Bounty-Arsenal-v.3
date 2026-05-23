@@ -28,7 +28,6 @@ This repository is being prepared as a public-facing version of the project. Int
 - `scans/` scan models, tasks, APIs, exports, websocket updates
 - `subscriptions/` plan and usage management
 - `users/` authentication, profile, verification, integrations
-- `tests/` backend and detector tests
 
 ## Quick start with Docker
 
@@ -64,12 +63,9 @@ npm install
 npm start
 ```
 
-## Testing
+## Public release scope
 
-```bash
-pytest
-cd frontend && npm test
-```
+The public repository intentionally omits most internal runbooks, launch checklists, and the private test suite used in day-to-day development.
 
 ## Public release notes
 
