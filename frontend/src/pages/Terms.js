@@ -88,15 +88,15 @@ const Terms = () => {
             <li>False positives or missed vulnerabilities</li>
           </ul>
 
-          <h2>7. Free Public Edition</h2>
+          <h2>7. Open-Source Release</h2>
           <p>
-            This public edition of BugBounty Arsenal is provided free of charge in its current release.
+            BugBounty Arsenal is released here as open-source software.
             Optional donations may be offered to support hosting and maintenance, but payment is not required
-            to access the public feature set.
+            to use the features included in this repository.
           </p>
           <p>
             Some high-risk actions may still require email or domain verification as a safety control.
-            Verification requirements are separate from pricing and are intended to reduce abuse.
+            These verification requirements are intended to reduce abuse.
           </p>
 
           <h2>8. Account Termination</h2>

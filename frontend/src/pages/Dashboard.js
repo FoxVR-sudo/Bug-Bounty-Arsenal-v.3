@@ -115,9 +115,9 @@ const Dashboard = () => {
     
     // Listen for window focus to refresh data when returning to tab
     const handleFocus = () => {
-      const subscriptionUpdated = localStorage.getItem('subscription_updated');
-      if (subscriptionUpdated === 'true') {
-        localStorage.removeItem('subscription_updated');
+      const usageStatusUpdated = localStorage.getItem('usage_status_updated');
+      if (usageStatusUpdated === 'true') {
+        localStorage.removeItem('usage_status_updated');
         console.log('Window focused - refreshing usage data...');
         fetchUsageStatus();
         fetchUserInfo();
@@ -127,8 +127,8 @@ const Dashboard = () => {
     
     // Listen for storage changes from other tabs/windows
     const handleStorageChange = (e) => {
-      if (e.key === 'subscription_updated' && e.newValue === 'true') {
-        localStorage.removeItem('subscription_updated');
+      if (e.key === 'usage_status_updated' && e.newValue === 'true') {
+        localStorage.removeItem('usage_status_updated');
         console.log('Storage event - refreshing usage data...');
         fetchUsageStatus();
         fetchUserInfo();

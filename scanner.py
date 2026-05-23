@@ -116,7 +116,7 @@ logger.handlers = [handler]
 SCANNER_VERSION = "2.0"  # Phase 2: External tool integrations (Subfinder, HTTPX, Nuclei)
 
 
-# Canonical mapping: detector key (used by API/UI/subscription tiers) -> registered function names.
+# Canonical mapping: detector key (used by API/UI/access tiers) -> registered function names.
 # If a key is missing here, the scanner will assume key == function name.
 DETECTOR_KEY_TO_FUNCTION_NAMES = {
     "reflection_detector": ["detect_reflections"],
@@ -878,15 +878,15 @@ async def scan_single_url(
         scan_mode = str(context.get('scan_mode', 'normal')).lower()
         user_tier = str(context.get('user_tier', 'free')).lower()
 
-        paid_plans_enabled = str(os.environ.get("PAID_PLANS_ENABLED", "false")).strip().lower() in {
+        access_controls_enabled = str(os.environ.get("ACCESS_CONTROLS_ENABLED", "false")).strip().lower() in {
             "1",
             "true",
             "yes",
             "on",
         }
 
-        # Get allowed detectors based on tier (unless paid plans are disabled)
-        if not paid_plans_enabled:
+        # Apply detector access rules only when access controls are enabled.
+        if not access_controls_enabled:
             allowed_by_tier = set(FULL_DETECTOR_SET)
         elif user_tier == "free":
             allowed_by_tier = set(CORE_DETECTORS)

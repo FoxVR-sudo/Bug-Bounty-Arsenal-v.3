@@ -4,14 +4,14 @@ All notable public-release changes for this repository are documented here.
 
 ## v3.0.5 - 2026-05-23
 
-- removed dormant pricing, payment-success, and enterprise signup pages from the frontend public surface
-- renamed the remaining usage UI from subscription wording to neutral scan-usage and support wording
-- switched public scan gating and legal copy away from upgrade messaging to free-edition access and verification messaging
+- removed dormant legacy routes and signup flows that were outside the open-source surface
+- renamed the remaining usage UI to neutral scan-usage and support wording
+- switched scan gating and legal copy away from upgrade messaging to open-source and verification wording
 
 ## v3.0.4 - 2026-05-23
 
-- renamed the public detector access module from `subscription.py` to `detector_access.py`
-- clarified in the README that the public edition is fully free in this release
+- renamed the detector access module to `detector_access.py`
+- clarified in the README that this repository is the open-source release
 - tightened the walkthrough badge copy so the scope-consent label no longer overflows
 
 ## v3.0.3 - 2026-05-23

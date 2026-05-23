@@ -13,7 +13,7 @@ import { getScanCategoryIcon } from '../lib/icons';
 import { isNonEmpty } from '../lib/validation';
 import useScanWebsocket from '../hooks/useScanWebsocket';
 import { isWsEnabled } from '../lib/websocket';
-import { paidPlansEnabled, publicFreeEdition } from '../config/features';
+import { accessControlsEnabled, openSourceRelease } from '../config/features';
 import api from '../services/api';
 import { domainVerifyService } from '../services/api';
 
@@ -90,7 +90,7 @@ const CategoryScan = () => {
   const [liveScanDetails, setLiveScanDetails] = useState(null);
   const [cancelling, setCancelling] = useState(false);
   const [usageStatus, setUsageStatus] = useState(null);
-  const [hasAccess, setHasAccess] = useState(paidPlansEnabled ? null : true);
+  const [hasAccess, setHasAccess] = useState(accessControlsEnabled ? null : true);
   const [availablePlans, setAvailablePlans] = useState([]);
   const [upgradeModal, setUpgradeModal] = useState(null);
   const [showDetectorDetails, setShowDetectorDetails] = useState(false);
@@ -199,7 +199,7 @@ const CategoryScan = () => {
 
   useEffect(() => {
     fetchCategoryData();
-    if (paidPlansEnabled) {
+    if (accessControlsEnabled) {
       fetchUsageStatus();
       fetchPlans();
     } else {
@@ -209,16 +209,22 @@ const CategoryScan = () => {
 
   // Check access when both category and subscription are loaded
   useEffect(() => {
-    if (!paidPlansEnabled) {
+    if (!accessControlsEnabled) {
       setHasAccess(true);
       return;
     }
 
     if (category && usageStatus) {
-      const planHierarchy = { 'free': 0, 'pro': 1, 'pro plan': 1, 'enterprise': 2 };
+      const getAccessRank = (value) => {
+        const normalized = String(value || '').toLowerCase();
+        if (!normalized || normalized === 'free') return 0;
+        if (normalized === 'pro' || normalized === 'pro plan') return 1;
+        return 2;
+      };
+
       const userPlanName = (usageStatus.plan_name || usageStatus.plan?.name || 'free').toLowerCase();
-      const userPlanLevel = planHierarchy[userPlanName] || 0;
-      const requiredPlanLevel = planHierarchy[category.required_plan?.toLowerCase()] || 0;
+      const userPlanLevel = getAccessRank(userPlanName);
+      const requiredPlanLevel = getAccessRank(category.required_plan);
       
       console.log('Access check:', {
         category: category.name,
@@ -499,7 +505,7 @@ const CategoryScan = () => {
           <div className="flex items-center gap-4 mb-2">
             <span className="text-4xl text-primary">{getScanCategoryIcon(category.name, { size: 36 })}</span>
             <h1 className="ui-title">{category.display_name}</h1>
-            {paidPlansEnabled && category.required_plan !== 'free' && (
+            {accessControlsEnabled && category.required_plan !== 'free' && (
               <span className="px-3 py-1 bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-200 rounded-full text-sm font-semibold uppercase">
                 {category.required_plan}
               </span>
@@ -1079,7 +1085,7 @@ const CategoryScan = () => {
                     </div>
                   )}
                   <div>
-                    <strong>{publicFreeEdition ? 'Edition' : 'Access'}:</strong> {publicFreeEdition ? 'Free public build' : category.required_plan.toUpperCase()}
+                    <strong>{openSourceRelease ? 'Release' : 'Access'}:</strong> {openSourceRelease ? 'Open-source release' : category.required_plan.toUpperCase()}
                   </div>
                 </div>
               </div>

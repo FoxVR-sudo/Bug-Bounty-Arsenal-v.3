@@ -41,7 +41,7 @@ const Privacy = () => {
             <li><strong>Password:</strong> Stored using industry-standard one-way password hashing</li>
             <li><strong>Name:</strong> For personalization</li>
             <li><strong>Phone number:</strong> For SMS verification (optional; only if enabled)</li>
-            <li><strong>Address:</strong> For billing purposes (optional; only if paid plans are enabled)</li>
+            <li><strong>Address:</strong> For account or organization details when you choose to provide it</li>
           </ul>
 
           <h3>2.2 Usage Information</h3>
@@ -53,10 +53,9 @@ const Privacy = () => {
             <li><strong>Cookies:</strong> For session management and analytics</li>
           </ul>
 
-          <h3>2.3 Payment Information</h3>
+          <h3>2.3 Donation Information</h3>
           <ul>
             <li><strong>Donations:</strong> If you choose to donate, payment data is handled by PayPal (we do not store your card details)</li>
-            <li><strong>Historical subscriptions:</strong> If paid plans were enabled at the time, payment data may have been handled by Stripe</li>
             <li><strong>We DO NOT store:</strong> Credit card numbers or CVV codes</li>
           </ul>
 
@@ -64,7 +63,6 @@ const Privacy = () => {
           <ul>
             <li>Provide and maintain the Service</li>
             <li>Process donations (if you choose to donate)</li>
-            <li>Process payments and subscriptions (only if paid plans are enabled)</li>
             <li>Send SMS verification codes (via Twilio, only if enabled)</li>
             <li>Improve Service quality and features</li>
             <li>Detect and prevent fraud or abuse</li>
@@ -78,7 +76,6 @@ const Privacy = () => {
           <h3>4.1 Service Providers</h3>
           <ul>
             <li><strong>PayPal:</strong> Donations</li>
-            <li><strong>Stripe:</strong> Payment processing (only if paid plans are enabled)</li>
             <li><strong>Twilio:</strong> SMS verification (only if enabled)</li>
             <li><strong>Cloud providers:</strong> Hosting infrastructure</li>
           </ul>
@@ -95,9 +92,9 @@ const Privacy = () => {
 
           <h2>5. Data Retention</h2>
           <ul>
-            <li><strong>Scan data:</strong> Retained according to your subscription plan retention settings and our data safety policies</li>
+            <li><strong>Scan data:</strong> Retained according to the active retention settings and our data safety policies</li>
             <li><strong>Deleted accounts:</strong> We may retain limited records as required for security, fraud prevention, and legal compliance</li>
-            <li><strong>Billing records:</strong> Retained as required by applicable law and payment processor requirements</li>
+            <li><strong>Donation records:</strong> Retained as required by applicable law and payment processor requirements</li>
             <li><strong>Security logs:</strong> Retained for a limited period for incident response and abuse prevention</li>
           </ul>
 

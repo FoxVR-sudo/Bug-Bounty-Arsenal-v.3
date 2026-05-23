@@ -10,9 +10,9 @@
 
 BugBounty Arsenal is a full-stack platform for running authorized web application security scans, collecting evidence, and triaging results from a single interface.
 
-The public edition is completely free in this release. Paid plans and private billing flows are not enabled here.
+This repository is the open-source release of BugBounty Arsenal.
 
-The public edition focuses on development-safe source code. Operational runbooks, environment-specific deployment assets, customer evidence, and private testing material are intentionally excluded.
+It focuses on development-safe source code. Operational runbooks, environment-specific deployment assets, customer evidence, and internal testing material are intentionally excluded.
 
 ## What it includes
 
@@ -26,7 +26,7 @@ The public edition focuses on development-safe source code. Operational runbooks
 
 ![BugBounty Arsenal walkthrough](assets/product-walkthrough.svg)
 
-Live links: [Open the live app](https://bugbounty-arsenal.net) · [Latest public release](https://github.com/FoxVR-sudo/Bug-Bounty-Arsenal-v.3/releases/latest)
+Live links: [Open the live app](https://bugbounty-arsenal.net) · [Latest release](https://github.com/FoxVR-sudo/Bug-Bounty-Arsenal-v.3/releases/latest)
 
 1. Set the target scope and confirm you are authorized to test it.
 2. Start a scan from the dashboard and let the worker pipeline run detectors in the background.
@@ -54,7 +54,7 @@ Live links: [Open the live app](https://bugbounty-arsenal.net) · [Latest public
 - `detectors/` active and passive detector implementations
 - `frontend/` React application and static server
 - `scans/` scan models, tasks, APIs, exports, websocket updates
-- `subscriptions/` plan and usage management
+- `subscriptions/` usage state and related data models
 - `users/` authentication, verification, profile, integrations
 
 ## Quick start
@@ -92,15 +92,15 @@ npm install
 npm start
 ```
 
-## Public repository scope
+## Repository Scope
 
-This public repository intentionally omits:
+This repository intentionally omits:
 
 - internal runbooks and launch checklists
 - evidence and generated scan artifacts
 - deployment-only infrastructure files
 - local databases, keys, certificates, and editor state
-- the private day-to-day test suite used in the source repository
+- the internal day-to-day test suite used in the main development repository
 
 ## Safety
 

@@ -294,7 +294,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Payment Methods removed: subscriptions are paused */}
+      {/* Legacy billing widgets removed from the open-source release */}
     </div>
   );
 };

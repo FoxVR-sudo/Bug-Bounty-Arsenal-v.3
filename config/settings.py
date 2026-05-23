@@ -113,10 +113,7 @@ if TURNSTILE_ENABLED and not TURNSTILE_SECRET_KEY:
     TURNSTILE_ENABLED = False
 
 # Product mode flags
-#
-# These are intended to make it easy to temporarily pause billing/SMS flows
-# without deleting code.
-PAID_PLANS_ENABLED = _env_bool('PAID_PLANS_ENABLED', default=False)
+ACCESS_CONTROLS_ENABLED = _env_bool('ACCESS_CONTROLS_ENABLED', default=False)
 SMS_VERIFICATION_ENABLED = _env_bool('SMS_VERIFICATION_ENABLED', default=True)
 ENTERPRISE_VERIFICATION_ENABLED = _env_bool('ENTERPRISE_VERIFICATION_ENABLED', default=False)
 IPWHOIS_SECURITY_ENABLED = _env_bool('IPWHOIS_SECURITY_ENABLED', default=False)

@@ -1,10 +1,6 @@
-"""
-Detector access definitions for the public free edition and optional private tiers.
+"""Detector access definitions for the open-source release."""
 
-When PAID_PLANS_ENABLED is false, the scanner allows the full detector set.
-"""
-
-# Core detectors available in the baseline free experience
+# Core detectors available in the default experience
 CORE_DETECTORS = [
     'reflection_detector',
     'sql_pattern_detector',
@@ -14,7 +10,7 @@ CORE_DETECTORS = [
     'dir_listing_detector',
 ]
 
-# Extended detector set used by private tiers when paid plans are enabled
+# Extended detector set used when access controls are enabled
 EXTENDED_DETECTORS = CORE_DETECTORS + [
     'ssrf_detector',
     'advanced_ssrf_detector',
@@ -28,7 +24,7 @@ EXTENDED_DETECTORS = CORE_DETECTORS + [
     'ssti_detector',
 ]
 
-# Full detector set used by the free public edition and any all-access private tiers
+# Full detector set used by the default open-source release and all-access deployments
 FULL_DETECTOR_SET = EXTENDED_DETECTORS + [
     'ssrf_oob_detector',
     'graphql_detector',
@@ -74,7 +70,7 @@ FULL_DETECTOR_SET = EXTENDED_DETECTORS + [
     'interactsh_client',
 ]
 
-# Detectors that remain verification-gated even in the free edition
+# Detectors that remain verification-gated
 VERIFICATION_GATED_DETECTORS = [
     'fuzz_detector',
     'file_upload_detector',

@@ -83,14 +83,11 @@ function App() {
                 <Route path="/verify-email/:uid/:token" element={<VerifyEmail />} />
                 <Route path="/reset-password/:uid/:token" element={<ResetPassword />} />
                 <Route path="/support" element={<SupportProject />} />
-                <Route path="/payment-success" element={<Navigate to="/support?source=legacy-payment" replace />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/disclaimer" element={<Disclaimer />} />
                 <Route path="/aup" element={<AcceptableUsePolicy />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/subscription" element={<Navigate to="/support?source=legacy-subscription" replace />} />
-                <Route path="/pricing" element={<Navigate to="/support?source=legacy-pricing" replace />} />
               <Route
             path="/dashboard"
             element={
