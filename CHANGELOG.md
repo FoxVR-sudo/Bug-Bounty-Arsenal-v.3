@@ -2,6 +2,11 @@
 
 All notable public-release changes for this repository are documented here.
 
+## v3.0.3 - 2026-05-23
+
+- fixed the walkthrough asset layout so card text stays within its panels
+- added direct live and release links below the walkthrough section in the README
+
 ## v3.0.2 - 2026-05-23
 
 - added a product walkthrough section to the README

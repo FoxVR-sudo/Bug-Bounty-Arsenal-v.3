@@ -2,56 +2,64 @@
   <rect width="1280" height="720" rx="36" fill="#08111F"/>
   <rect x="36" y="36" width="1208" height="648" rx="28" fill="#0D1B2A" stroke="#17324D"/>
   <text x="84" y="106" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Product Walkthrough</text>
-  <text x="84" y="146" fill="#9EB7CA" font-family="Arial, Helvetica, sans-serif" font-size="22">A typical path from authorized scope selection to triage and export</text>
+  <text x="84" y="146" fill="#9EB7CA" font-family="Arial, Helvetica, sans-serif" font-size="22">A typical path from authorized scope selection to review and export</text>
 
-  <rect x="84" y="196" width="252" height="372" rx="24" fill="#112235" stroke="#1B4468"/>
-  <rect x="112" y="230" width="56" height="56" rx="18" fill="#153956"/>
-  <text x="132" y="267" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">1</text>
-  <text x="112" y="324" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Define scope</text>
-  <text x="112" y="362" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">Set the target, pick a</text>
-  <text x="112" y="388" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">scan category, and confirm</text>
-  <text x="112" y="414" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">you are authorized to test.</text>
-  <rect x="112" y="466" width="196" height="48" rx="12" fill="#0C1A29" stroke="#234B6E"/>
-  <text x="136" y="497" fill="#7CE38B" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">Consent + target setup</text>
+  <rect x="84" y="196" width="260" height="376" rx="24" fill="#112235" stroke="#1B4468"/>
+  <rect x="112" y="228" width="56" height="56" rx="18" fill="#153956"/>
+  <text x="132" y="265" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">1</text>
+  <text x="112" y="322" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Define scope</text>
+  <text x="112" y="358" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">Set the target, choose</text>
+  <text x="112" y="384" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">a scan category, and</text>
+  <text x="112" y="410" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">confirm you are</text>
+  <text x="112" y="436" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">authorized to test.</text>
+  <rect x="112" y="476" width="208" height="46" rx="12" fill="#0C1A29" stroke="#234B6E"/>
+  <text x="139" y="505" fill="#7CE38B" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Consent + scope setup</text>
 
-  <rect x="366" y="196" width="252" height="372" rx="24" fill="#112235" stroke="#1B4468"/>
-  <rect x="394" y="230" width="56" height="56" rx="18" fill="#153956"/>
-  <text x="414" y="267" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">2</text>
-  <text x="394" y="324" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Run scan</text>
-  <text x="394" y="362" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">Queue detector work, follow</text>
-  <text x="394" y="388" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">progress, and let workers</text>
-  <text x="394" y="414" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">process findings in the back.</text>
-  <rect x="394" y="456" width="196" height="18" rx="9" fill="#0C1A29"/>
-  <rect x="394" y="456" width="136" height="18" rx="9" fill="#49C6E5"/>
-  <rect x="394" y="490" width="196" height="18" rx="9" fill="#0C1A29"/>
-  <rect x="394" y="490" width="171" height="18" rx="9" fill="#7CE38B"/>
+  <rect x="368" y="196" width="260" height="376" rx="24" fill="#112235" stroke="#1B4468"/>
+  <rect x="396" y="228" width="56" height="56" rx="18" fill="#153956"/>
+  <text x="416" y="265" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">2</text>
+  <text x="396" y="322" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Run scan</text>
+  <text x="396" y="358" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">Queue detector work,</text>
+  <text x="396" y="384" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">watch progress, and let</text>
+  <text x="396" y="410" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">workers process the scan</text>
+  <text x="396" y="436" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">in the background.</text>
+  <rect x="396" y="474" width="208" height="18" rx="9" fill="#0C1A29"/>
+  <rect x="396" y="474" width="148" height="18" rx="9" fill="#49C6E5"/>
+  <rect x="396" y="508" width="208" height="18" rx="9" fill="#0C1A29"/>
+  <rect x="396" y="508" width="182" height="18" rx="9" fill="#7CE38B"/>
 
-  <rect x="648" y="196" width="252" height="372" rx="24" fill="#112235" stroke="#1B4468"/>
-  <rect x="676" y="230" width="56" height="56" rx="18" fill="#153956"/>
-  <text x="696" y="267" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">3</text>
-  <text x="676" y="324" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Review findings</text>
-  <text x="676" y="362" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">Filter results, inspect</text>
-  <text x="676" y="388" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">severity, and open captured</text>
-  <text x="676" y="414" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">evidence for each issue.</text>
-  <rect x="676" y="458" width="196" height="92" rx="16" fill="#0C1A29" stroke="#234B6E"/>
-  <text x="700" y="494" fill="#FF8B8B" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Critical</text>
-  <text x="700" y="522" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="17">SSRF detector</text>
-  <text x="700" y="546" fill="#9EB7CA" font-family="Arial, Helvetica, sans-serif" font-size="16">Evidence attached</text>
+  <rect x="652" y="196" width="260" height="376" rx="24" fill="#112235" stroke="#1B4468"/>
+  <rect x="680" y="228" width="56" height="56" rx="18" fill="#153956"/>
+  <text x="700" y="265" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">3</text>
+  <text x="680" y="322" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Review findings</text>
+  <text x="680" y="358" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">Filter results, inspect</text>
+  <text x="680" y="384" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">severity, and review</text>
+  <text x="680" y="410" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">captured evidence for</text>
+  <text x="680" y="436" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">each issue.</text>
+  <rect x="680" y="470" width="208" height="92" rx="16" fill="#0C1A29" stroke="#234B6E"/>
+  <text x="704" y="504" fill="#FF8B8B" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Critical</text>
+  <text x="704" y="530" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="17">SSRF detector</text>
+  <text x="704" y="554" fill="#9EB7CA" font-family="Arial, Helvetica, sans-serif" font-size="16">Evidence attached</text>
 
-  <rect x="930" y="196" width="252" height="372" rx="24" fill="#112235" stroke="#1B4468"/>
-  <rect x="958" y="230" width="56" height="56" rx="18" fill="#153956"/>
-  <text x="978" y="267" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">4</text>
-  <text x="958" y="324" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Export results</text>
-  <text x="958" y="362" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">Package the scan outcome for</text>
-  <text x="958" y="388" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">triage, reporting, or internal</text>
-  <text x="958" y="414" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="20">handoff workflows.</text>
-  <rect x="958" y="462" width="196" height="48" rx="12" fill="#0C1A29" stroke="#234B6E"/>
-  <text x="990" y="493" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700">JSON / CSV / PDF</text>
+  <rect x="936" y="196" width="260" height="376" rx="24" fill="#112235" stroke="#1B4468"/>
+  <rect x="964" y="228" width="56" height="56" rx="18" fill="#153956"/>
+  <text x="984" y="265" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">4</text>
+  <text x="964" y="322" fill="#F4F8FB" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Export results</text>
+  <text x="964" y="358" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">Package the outcome</text>
+  <text x="964" y="384" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">for triage, reporting,</text>
+  <text x="964" y="410" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">or internal handoff</text>
+  <text x="964" y="436" fill="#C9D7E4" font-family="Arial, Helvetica, sans-serif" font-size="18">workflows.</text>
+  <rect x="964" y="476" width="208" height="46" rx="12" fill="#0C1A29" stroke="#234B6E"/>
+  <text x="997" y="505" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">JSON / CSV / PDF</text>
 
-  <path d="M336 382H366" stroke="#49C6E5" stroke-width="8" stroke-linecap="round"/>
-  <path d="M618 382H648" stroke="#49C6E5" stroke-width="8" stroke-linecap="round"/>
-  <path d="M900 382H930" stroke="#49C6E5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M344 388H368" stroke="#49C6E5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M628 388H652" stroke="#49C6E5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M912 388H936" stroke="#49C6E5" stroke-width="8" stroke-linecap="round"/>
 
-  <rect x="84" y="606" width="1098" height="42" rx="21" fill="#0C1A29" stroke="#17324D"/>
-  <text x="110" y="633" fill="#9EB7CA" font-family="Arial, Helvetica, sans-serif" font-size="18">Authorized targets only • Detector orchestration • Evidence capture • Result triage • Export-ready workflow</text>
+  <rect x="84" y="610" width="240" height="40" rx="20" fill="#0C1A29" stroke="#17324D"/>
+  <text x="112" y="636" fill="#9EB7CA" font-family="Arial, Helvetica, sans-serif" font-size="16">Authorized targets only</text>
+  <rect x="348" y="610" width="404" height="40" rx="20" fill="#0C1A29" stroke="#17324D"/>
+  <text x="409" y="636" fill="#9EB7CA" font-family="Arial, Helvetica, sans-serif" font-size="16">Orchestration • Evidence • Export</text>
+  <rect x="776" y="610" width="370" height="40" rx="20" fill="#0C1A29" stroke="#17324D"/>
+  <text x="806" y="636" fill="#49C6E5" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Live app: bugbounty-arsenal.net</text>
 </svg>

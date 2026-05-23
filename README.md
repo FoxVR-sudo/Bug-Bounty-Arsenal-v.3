@@ -24,6 +24,8 @@ The public edition focuses on development-safe source code. Operational runbooks
 
 ![BugBounty Arsenal walkthrough](assets/product-walkthrough.svg)
 
+Live links: [Open the live app](https://bugbounty-arsenal.net) · [Latest public release](https://github.com/FoxVR-sudo/Bug-Bounty-Arsenal-v.3/releases/latest)
+
 1. Set the target scope and confirm you are authorized to test it.
 2. Start a scan from the dashboard and let the worker pipeline run detectors in the background.
 3. Review findings, evidence, and severity data from the results interface.
