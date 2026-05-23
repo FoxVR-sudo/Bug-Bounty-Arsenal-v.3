@@ -2,6 +2,12 @@
 
 All notable public-release changes for this repository are documented here.
 
+## v3.0.2 - 2026-05-23
+
+- added a product walkthrough section to the README
+- added a visual demo workflow asset for the public repository landing page
+- polished the repository presentation for first-time visitors
+
 ## v3.0.1 - 2026-05-23
 
 - polished repository health files for public collaboration

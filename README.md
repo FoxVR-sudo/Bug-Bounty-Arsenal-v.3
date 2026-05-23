@@ -20,6 +20,22 @@ The public edition focuses on development-safe source code. Operational runbooks
 - Export and evidence handling paths for result review workflows
 - Docker-based local development setup
 
+## Product walkthrough
+
+![BugBounty Arsenal walkthrough](assets/product-walkthrough.svg)
+
+1. Set the target scope and confirm you are authorized to test it.
+2. Start a scan from the dashboard and let the worker pipeline run detectors in the background.
+3. Review findings, evidence, and severity data from the results interface.
+4. Export the outcome for triage, disclosure, or internal remediation workflows.
+
+### Typical operator flow
+
+- Sign in and configure the target or category you want to assess.
+- Launch a scan and monitor progress while Celery workers process the queued tasks.
+- Inspect findings, filter noise, and verify the evidence captured for each issue.
+- Export the results and hand them off to the next review or reporting step.
+
 ## Stack
 
 - Django 6 and Django REST Framework
