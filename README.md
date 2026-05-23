@@ -1,35 +1,41 @@
 # BugBounty Arsenal v3
 
-BugBounty Arsenal is a full-stack security testing platform for managing authorized web application scans, detector execution, evidence collection, and result triage from a single dashboard.
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Backend: Django](https://img.shields.io/badge/backend-Django%206-0c4b33)]()
+[![Frontend: React](https://img.shields.io/badge/frontend-React%2018-61dafb)]()
+[![Workers: Celery](https://img.shields.io/badge/workers-Celery-37814a)]()
+[![Runtime: Docker](https://img.shields.io/badge/runtime-Docker-2496ed)]()
 
-This repository is being prepared as a public-facing version of the project. Internal runbooks, deployment-only files, customer evidence, and local environment artifacts should stay out of the public release.
+BugBounty Arsenal is a full-stack platform for running authorized web application security scans, collecting evidence, and triaging results from a single interface.
+
+The public edition focuses on development-safe source code. Operational runbooks, environment-specific deployment assets, customer evidence, and private testing material are intentionally excluded.
+
+## What it includes
+
+- Django API and async scan orchestration
+- React dashboard for scans, findings, auth, and account flows
+- Detector-based scan engine for common web security checks
+- Export and evidence handling paths for result review workflows
+- Docker-based local development setup
 
 ## Stack
 
 - Django 6 and Django REST Framework
 - React 18, React Query, React Router, Tailwind CSS
-- Celery and Redis for async scan execution
+- Celery and Redis for async job execution
 - SQLite or PostgreSQL-backed persistence
 - Docker Compose for local development
 
-## Core capabilities
-
-- Launch and monitor scans from a web dashboard
-- Run detector-based checks for common web security issues
-- Store findings, evidence metadata, and scan history
-- Export results for reporting and triage workflows
-- Manage authentication, verification, user profiles, and plan-based access
-
 ## Repository layout
 
-- `config/` Django settings, ASGI, Celery, middleware, routing
+- `config/` settings, ASGI, Celery, middleware, routing
 - `detectors/` active and passive detector implementations
-- `frontend/` React client application
+- `frontend/` React application and static server
 - `scans/` scan models, tasks, APIs, exports, websocket updates
 - `subscriptions/` plan and usage management
-- `users/` authentication, profile, verification, integrations
+- `users/` authentication, verification, profile, integrations
 
-## Quick start with Docker
+## Quick start
 
 ```bash
 cp .env.example .env
@@ -38,9 +44,10 @@ docker compose exec web python manage.py migrate
 docker compose exec web python manage.py createsuperuser
 ```
 
-Frontend: `http://localhost:3000`
+App URLs:
 
-API: `http://localhost:8001/api`
+- Frontend: `http://localhost:3000`
+- API: `http://localhost:8001/api`
 
 ## Local development
 
@@ -63,20 +70,15 @@ npm install
 npm start
 ```
 
-## Public release scope
+## Public repository scope
 
-The public repository intentionally omits most internal runbooks, launch checklists, and the private test suite used in day-to-day development.
+This public repository intentionally omits:
 
-## Public release notes
-
-The public repo should exclude:
-
+- internal runbooks and launch checklists
 - evidence and generated scan artifacts
-- private deployment scripts and environment-specific configs
-- internal status notes, summaries, and migration scratch files
+- deployment-only infrastructure files
 - local databases, keys, certificates, and editor state
-
-This public release is intended to contain only development-safe source and documentation.
+- the private day-to-day test suite used in the source repository
 
 ## Safety
 
